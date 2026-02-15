@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-pre')</script>
+    <style>.light-pre body,.light-pre{background:#fafafa;color:#111827}</style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c0e12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#0c0e12">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capital Expenditure Strategy and Governance: $32M+ portfolio management, ROI analysis, and capital allocation.">
+    <title>CapEx Strategy — Sourabh Tarodekar | Technical Program Management</title>
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0c0e12; --bg-secondary: #15181e; --bg-tertiary: #1a1d24;
+            --text-primary: #f0f0f0; --text-secondary: #9ca3af; --text-tertiary: #6b7280;
+            --accent: #b8954f; --accent-subtle: rgba(184, 149, 79, 0.08);
+            --border: rgba(255, 255, 255, 0.06); --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+        }
+        body.light-mode {
+            --bg-primary: #fafafa; --bg-secondary: #ffffff; --bg-tertiary: #f3f4f6;
+            --text-primary: #111827; --text-secondary: #4b5563; --text-tertiary: #6b7280;
+            --accent: #1e3a5f; --accent-subtle: rgba(30, 58, 95, 0.06);
+            --border: rgba(0, 0, 0, 0.08); --success: #059669; --warning: #d97706; --danger: #dc2626;
+        }
+        html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .reading-progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 10000; width: 0%; transition: width 0.1s; }
+        #circuit-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.4; pointer-events: none; }
+        
+        header { position: sticky; top: 0; z-index: 1000; padding: 1.5rem 6rem; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; width: 100%; background: rgba(12, 14, 18, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        body.light-mode header { background: rgba(250, 250, 250, 0.8); }
+        .brand { display: flex; flex-direction: column; gap: 0.25rem; }
+        .brand-name { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-primary); }
+        .brand-name a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+        .brand-name a:hover { opacity: 0.7; }
+        .brand-role { font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 0.05em; font-weight: 500; }
+        
+        nav { display: flex; gap: 2.5rem; align-items: center; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: all 0.2s ease; position: relative; padding: 0.5rem 0; }
+        nav a:hover { color: var(--text-primary); }
+        nav a.active { color: var(--accent); }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s ease; }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        
+        .theme-toggle { background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.5rem; margin-left: 1.5rem; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .theme-toggle:hover { color: var(--accent); background: var(--accent-subtle); }
+        
+        .hero { position: relative; z-index: 10; padding: 5rem 6rem 3rem; max-width: 1000px; margin: 0 auto; width: 100%; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.875rem; color: var(--text-tertiary); }
+        .breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease; }
+        .breadcrumb a:hover { color: var(--accent); }
+        .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.75rem; }
+        .eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background-color: var(--accent); }
+        h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        h1 strong { font-weight: 600; }
+        .lead { font-size: 1.25rem; color: var(--text-secondary); line-height: 1.7; max-width: 800px; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 6rem 6rem; position: relative; z-index: 10; width: 100%; }
+        h2 { font-size: 1.75rem; font-weight: 400; color: var(--text-primary); margin: 4rem 0 1.5rem; letter-spacing: -0.01em; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+        
+        .content-section { color: var(--text-secondary); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; }
+        .content-section p { margin-bottom: 1.5rem; max-width: 75ch; }
+        .content-section ul { margin-left: 0; margin-bottom: 2rem; list-style: none; }
+        .content-section li { margin-bottom: 0.75rem; position: relative; padding-left: 1.5rem; }
+        .content-section li::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: 0.6; }
+        
+        .framework { margin: 2rem 0; border-left: 2px solid var(--accent); padding-left: 2rem; }
+        .framework-step { margin-bottom: 2rem; position: relative; }
+        .framework-step:last-child { margin-bottom: 0; }
+        .step-number { font-size: 0.875rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+        .step-title { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .step-content { color: var(--text-secondary); line-height: 1.7; }
+        
+        .table-container { margin: 2rem 0; overflow-x: auto; border: 1px solid var(--border); background: var(--bg-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+        th { text-align: left; padding: 1rem 1.5rem; background: var(--bg-tertiary); color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem; border-bottom: 1px solid var(--border); }
+        td { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+        tr:last-child td { border-bottom: none; }
+        .status-green { color: var(--success); font-weight: 600; }
+        .status-yellow { color: var(--warning); font-weight: 600; }
+        .status-red { color: var(--danger); font-weight: 600; }
+        
+        .highlight-box { background: var(--bg-tertiary); border: 1px solid var(--border); padding: 2rem; margin: 2rem 0; border-left: 3px solid var(--accent); }
+        .highlight-title { font-size: 0.875rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .metric-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-label { color: var(--text-secondary); }
+        .metric-value { color: var(--text-primary); font-weight: 600; }
+        
+        .story-box { margin: 3rem 0; padding: 3rem; background: var(--bg-secondary); border: 1px solid var(--border); position: relative; }
+        .story-label { position: absolute; top: -12px; left: 2rem; background: var(--bg-primary); padding: 0.25rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; border: 1px solid var(--border); }
+        .story-grid { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .story-grid:last-child { margin-bottom: 0; }
+        .story-letter { font-size: 2rem; font-weight: 300; color: var(--accent); font-family: serif; line-height: 1; }
+        .story-content h4 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .story-content p { color: var(--text-secondary); line-height: 1.7; margin: 0; }
+        
+        .impact-box { margin: 3rem 0; padding: 2rem; background: var(--accent-subtle); border-left: 3px solid var(--accent); }
+        .impact-title { font-size: 0.875rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .impact-list { list-style: none; margin: 0; padding: 0; }
+        .impact-list li { padding: 0.75rem 0; color: var(--text-primary); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.75rem; }
+        .impact-list li:last-child { border-bottom: none; }
+        .impact-list li::before { content: '→'; color: var(--accent); font-weight: bold; }
+        
+        .page-nav { margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .nav-link { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border: 1px solid var(--border); color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; }
+        .nav-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-subtle); }
+        .nav-link.next { flex-direction: row-reverse; }
+        
+        footer { position: relative; z-index: 10; padding: 3rem 6rem; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; width: 100%; border-top: 1px solid var(--border); background: var(--bg-primary); }
+        .footer-left { font-size: 0.875rem; color: var(--text-secondary); letter-spacing: 0.02em; }
+        .footer-right { display: flex; gap: 2rem; }
+        .social-link { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; transition: color 0.2s ease; }
+        .social-link:hover { color: var(--accent); }
+        
+        @media (max-width: 1024px) {
+            header, .hero, .container, footer { padding-left: 3rem; padding-right: 3rem; }
+            .story-grid { grid-template-columns: 60px 1fr; gap: 1rem; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; padding: 1rem 2rem; }
+            nav { width: 100%; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+            .theme-toggle { margin-left: 0; position: absolute; right: 2rem; top: 1.5rem; }
+            .hero { padding: 4rem 2rem 2rem; }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            .container { padding: 0 2rem 4rem; }
+            .story-box { padding: 2rem; }
+            .story-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+            .story-letter { font-size: 1.5rem; }
+            th, td { padding: 0.75rem 1rem; font-size: 0.875rem; }
+            footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-transition" aria-hidden="true"></div>
+    <div class="reading-progress" id="progress-bar"></div>
+    <canvas id="circuit-canvas" aria-hidden="true" data-lines="6" data-grid="100" data-speed="0.1"></canvas>
+
+    <header>
+        <div class="brand">
+            <div class="brand-name"><a href="../index.html">Sourabh Tarodekar</a></div>
+            <div class="brand-role">Technical Program Management — Hardware & Operations</div>
+        </div>
+        
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../capabilities.html" class="active">Capabilities</a>
+            <a href="../experience.html">Experience</a>
+            <a href="../contact.html">Contact</a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i data-lucide="moon" size="18" id="theme-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+            <nav class="breadcrumb">
+                <a href="../capabilities.html">← Back to Capabilities</a>
+            </nav>
+
+        <div class="breadcrumb">
+            <a href="../capabilities.html">Capabilities</a>
+            <span>/</span>
+            <span>CapEx Strategy</span>
+        </div>
+        
+        <div class="eyebrow">Execution Domain</div>
+        <h1>Capital Expenditure <strong>Strategy & Governance</strong></h1>
+        <p class="lead">Driving disciplined capital decisions across development and production—managing $32M+ portfolios with focus on ROI, reuse, and risk-adjusted allocation.</p>
+    </section>
+
+    <main class="container">
+        <div class="content-section">
+            <h2>Capability Overview</h2>
+            <p>I manage $32M+ CapEx portfolios, balancing cost, capacity, timing, and risk across engineering development and manufacturing environments. My focus is on data-driven allocation, reuse, capitalization timing, and governance—not just procurement.</p>
+        </div>
+
+        <div class="content-section">
+            <h3>What I Own</h3>
+            <ul>
+                <li>CapEx portfolio planning & forecasting across multiple programs</li>
+                <li>Budget vs. spend tracking with variance analysis</li>
+                <li>Capitalization timing optimization</li>
+                <li>ROI / TCO / reuse analysis for equipment decisions</li>
+                <li>Vendor cost normalization and negotiation</li>
+                <li>Leadership trade-off narratives and decision support</li>
+            </ul>
+        </div>
+
+        <h2>How I Execute</h2>
+        <div class="framework">
+            <div class="framework-step">
+                <span class="step-number">01</span>
+                <div class="step-title">Demand Signal Alignment</div>
+                <div class="step-content">Translate engineering build plans into capital demand curves. Map phase-based capacity requirements to equipment procurement timelines.</div>
+            </div>
+            <div class="framework-step">
+                <span class="step-number">02</span>
+                <div class="step-title">Financial Modeling</div>
+                <div class="step-content">Develop ROI, TCO, and NPV scenarios for capital alternatives. Model reuse vs. incremental buy decisions with depreciation and capitalization timing impacts.</div>
+            </div>
+            <div class="framework-step">
+                <span class="step-number">03</span>
+                <div class="step-title">Governance & Controls</div>
+                <div class="step-content">Implement milestone-based release controls with risk-adjusted approvals. Maintain forecast variance tracking with early warning thresholds.</div>
+            </div>
+            <div class="framework-step">
+                <span class="step-number">04</span>
+                <div class="step-title">Executive Communication</div>
+                <div class="step-content">Frame clear trade-offs between cost, schedule, and readiness. Provide decision-ready narratives for Engineering and Finance leadership.</div>
+            </div>
+        </div>
+
+        <h2>Artifacts & Dashboards</h2>
+        
+        <h3>CapEx Portfolio View</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Budget</th>
+                        <th>Spend</th>
+                        <th>Variance</th>
+                        <th>Risk Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Program Alpha</td>
+                        <td>$6.2M</td>
+                        <td>$5.9M</td>
+                        <td class="status-green">-5%</td>
+                        <td class="status-green">Low</td>
+                    </tr>
+                    <tr>
+                        <td>Program Beta</td>
+                        <td>$8.4M</td>
+                        <td>$9.1M</td>
+                        <td class="status-yellow">+8%</td>
+                        <td class="status-yellow">Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Infrastructure</td>
+                        <td>$17.4M</td>
+                        <td>$16.6M</td>
+                        <td class="status-green">-4%</td>
+                        <td class="status-green">Low</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <div class="highlight-title">Reuse & Cost Avoidance Model</div>
+            <div class="metric-row">
+                <span class="metric-label">Equipment Reuse Identified</span>
+                <span class="metric-value">$800K</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Vendor Consolidation Savings</span>
+                <span class="metric-value">$600K+</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Total Capital Efficiency</span>
+                <span class="metric-value">$1.4M+</span>
+            </div>
+        </div>
+
+        <div class="story-box">
+            <div class="story-label">Execution Story</div>
+            
+            <div class="story-grid">
+                <div class="story-letter">S</div>
+                <div class="story-content">
+                    <h4>Situation</h4>
+                    <p>Late-stage engineering changes threatened CapEx overruns and capitalization delays, with $2.1M in unbudgeted equipment requests pending approval.</p>
+                </div>
+            </div>
+            
+            <div class="story-grid">
+                <div class="story-letter">T</div>
+                <div class="story-content">
+                    <h4>Task</h4>
+                    <p>Enable leadership to make informed trade-offs under schedule pressure while maintaining financial controls and audit compliance.</p>
+                </div>
+            </div>
+            
+            <div class="story-grid">
+                <div class="story-letter">A</div>
+                <div class="story-content">
+                    <h4>Action</h4>
+                    <p>Quantified cost, schedule, and capitalization impact for all pending requests. Modeled reuse vs. new buy scenarios including depreciation timing effects. Presented clear decision paths with risk-weighted recommendations to Engineering and Finance leadership.</p>
+                </div>
+            </div>
+            
+            <div class="story-grid">
+                <div class="story-letter">R</div>
+                <div class="story-content">
+                    <h4>Result</h4>
+                    <p>Improved forecast accuracy by 12–15% through better demand signaling. Reduced non-compliant spend by 27–30% via early governance intervention. Maintained CTB integrity during NPI ramps without capital delays.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact-box">
+            <div class="impact-title">Business Impact</div>
+            <ul class="impact-list">
+                <li>Capital efficiency at scale through disciplined reuse protocols</li>
+                <li>Fewer surprises at executive level via early warning systems</li>
+                <li>Enhanced trust with Finance and Operations through transparent governance</li>
+                <li>Faster, cleaner investment decisions with clear trade-off frameworks</li>
+            </ul>
+        </div>
+
+        <div class="page-nav">
+            <a href="build-readiness.html" class="nav-link">
+                <i data-lucide="arrow-left" size="18"></i>
+                Previous: Build Readiness
+            </a>
+            <a href="supply-chain.html" class="nav-link next">
+                Next: Supply Chain
+                <i data-lucide="arrow-right" size="18"></i>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">San Francisco Bay Area · Hardware · Manufacturing · Operations</div>
+        <div class="footer-right">
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.setAttribute('data-lucide', 'sun');
+            lucide.createIcons();
+        }
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            themeIcon.setAttribute('data-lucide', isLight ? 'sun' : 'moon');
+            lucide.createIcons();
+        });
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        });
+
+        const canvas = document.getElementById('circuit-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let circuits = [];
+        const GRID_SIZE = 100;
+        const LINE_COUNT = 8;
+
+        class CircuitLine {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.round((Math.random() * window.innerWidth) / GRID_SIZE) * GRID_SIZE;
+                this.y = Math.round((Math.random() * window.innerHeight) / GRID_SIZE) * GRID_SIZE;
+                this.direction = Math.floor(Math.random() * 4);
+                this.speed = 0.1;
+                this.opacity = 0;
+                this.targetOpacity = Math.random() * 0.08 + 0.02;
+                this.path = [{x: this.x, y: this.y}];
+                this.segmentLength = 0;
+                this.maxSegment = Math.random() * 3 + 2;
+            }
+            update() {
+                if (this.opacity < this.targetOpacity) {
+                    this.opacity += 0.002;
+                }
+                switch(this.direction) {
+                    case 0: this.y -= this.speed; break;
+                    case 1: this.x += this.speed; break;
+                    case 2: this.y += this.speed; break;
+                    case 3: this.x -= this.speed; break;
+                }
+                this.segmentLength += this.speed / GRID_SIZE;
+                if (this.segmentLength >= this.maxSegment) {
+                    if (Math.random() > 0.5) {
+                        const turn = Math.random() > 0.5 ? 1 : -1;
+                        this.direction = (this.direction + turn + 4) % 4;
+                    }
+                    this.segmentLength = 0;
+                    this.maxSegment = Math.random() * 3 + 2;
+                    this.path.push({x: this.x, y: this.y});
+                    if (this.path.length > 4) this.path.shift();
+                }
+                if (this.x < -100 || this.x > width + 100 || this.y < -100 || this.y > height + 100) {
+                    this.reset();
+                }
+            }
+            draw() {
+                const accentColor = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+                ctx.beginPath();
+                ctx.strokeStyle = accentColor;
+                ctx.globalAlpha = this.opacity;
+                ctx.lineWidth = 0.5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                if (this.path.length > 0) {
+                    ctx.moveTo(this.path[0].x, this.path[0].y);
+                    for (let point of this.path) {
+                        ctx.lineTo(point.x, point.y);
+                    }
+                    ctx.lineTo(this.x, this.y);
+                }
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function initCircuit() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            circuits = Array.from({length: LINE_COUNT}, () => new CircuitLine());
+        }
+
+        function animateCircuit() {
+            ctx.clearRect(0, 0, width, height);
+            circuits.forEach(circuit => {
+                circuit.update();
+                circuit.draw();
+            });
+            requestAnimationFrame(animateCircuit);
+        }
+
+        window.addEventListener('resize', initCircuit);
+        initCircuit();
+        animateCircuit();
+    </script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Execution capabilities in technical program management: CapEx, NPI, Supply Chain, CM/OEM, and program governance.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c0e12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+
+    <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-pre')</script>
+    <style>.light-pre body,.light-pre{background:#fafafa;color:#111827}</style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sourabh-tarodekar.github.io/capabilities.html">
+    <meta property="og:title" content="Execution Capabilities — Sourabh Tarodekar | Technical Program Management">
+    <meta property="og:description" content="Execution capabilities in technical program management: CapEx, NPI, Supply Chain, CM/OEM, and program governance.">
+    <meta property="og:site_name" content="Sourabh Tarodekar">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Execution Capabilities — Sourabh Tarodekar">
+    <meta name="twitter:description" content="Execution capabilities in technical program management: CapEx, NPI, Supply Chain, CM/OEM, and program governance.">
+
+    <title>Execution Capabilities — Sourabh Tarodekar | Technical Program Management</title>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="shared.css">
+
+    <style>
+        /* ---- Hero ---- */
+        .hero {
+            position: relative;
+            z-index: 10;
+            padding: 6rem 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .eyebrow::after {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background-color: var(--accent);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1 strong { font-weight: 600; }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ---- Container ---- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 6rem 6rem;
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* ---- Capability Grid ---- */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .capability-card {
+            position: relative;
+            padding: 2.5rem 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .capability-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .capability-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .capability-card:hover::before { transform: scaleX(1); }
+
+        body.light-mode .capability-card:hover { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-subtle);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .capability-card:hover .card-icon {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: scale(1.1);
+        }
+
+        body.light-mode .capability-card:hover .card-icon { color: #ffffff; }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .card-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.2s ease;
+        }
+
+        .capability-card:hover .card-link { gap: 0.75rem; }
+
+        /* ---- Info Section ---- */
+        .info-section {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .info-section h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .info-section p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .info-section strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ---- Footer Nav ---- */
+        .footer-nav {
+            margin-top: 6rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-link:hover { color: var(--accent); }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after { width: 100%; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 1200px) {
+            .hero, .container { padding-left: 3rem; padding-right: 3rem; }
+            .capability-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 4rem 1.5rem 2rem; }
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.1rem; }
+            .container { padding: 2rem 1.5rem; }
+            .capability-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .capability-card { min-height: auto; padding: 2rem; }
+            .info-section { padding: 2rem; margin-top: 3rem; }
+            .footer-nav { flex-direction: column; gap: 1.5rem; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-transition" aria-hidden="true"></div>
+
+    <canvas id="circuit-canvas" aria-hidden="true" data-lines="8" data-grid="100" data-speed="0.1"></canvas>
+
+    <header>
+        <div class="brand">
+            <div class="brand-name"><a href="index.html">Sourabh Tarodekar</a></div>
+            <div class="brand-role">Technical Program Management — Hardware & Operations</div>
+        </div>
+
+        <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
+            <i data-lucide="menu" size="20"></i>
+        </button>
+
+        <nav id="main-nav" aria-label="Site navigation">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="capabilities.html" class="active" aria-current="page">Capabilities</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <span class="availability-badge" aria-label="Currently open to new roles">
+                <span class="dot" aria-hidden="true"></span>Open to roles
+            </span>
+            <a href="resume.html" class="resume-btn" aria-label="View resume">
+                <i data-lucide="file-text" size="13" aria-hidden="true"></i> Resume
+            </a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+                <i data-lucide="moon" size="18" id="theme-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="eyebrow">Portfolio</div>
+        <h1>Execution <strong>Capabilities</strong></h1>
+        <p class="subtitle">How I drive complex hardware programs from development through scale</p>
+        <p class="intro">I've organized my work by what I can do for you, not just where I've been. Pick the capability that aligns with your current goals to see my process and impact in action.</p>
+    </section>
+
+    <main class="container">
+        <div class="capability-grid">
+            <!-- Card 1 -->
+            <a href="capabilities/product-technology.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="cpu" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">Product Development & Technology Execution</h3>
+                    <p class="card-description">Translating system intent into executable plans by managing technical dependencies, interfaces, and development risk across complex hardware programs.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="capabilities/build-readiness.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="check-circle" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">NPI & Engineering Build Readiness</h3>
+                    <p class="card-description">Owning clear-to-build execution across Proto, EVT, DVT, and PVT phases, ensuring material, supplier, and factory readiness before builds enter the line.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="capabilities/capex.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="trending-up" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">Capital Expenditure Strategy & Governance</h3>
+                    <p class="card-description">Driving capital allocation decisions through cost, capacity, timing, and risk trade-offs across development and production environments.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="capabilities/supply-chain.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="truck" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">Supply Chain & Material Execution</h3>
+                    <p class="card-description">Ensuring material readiness through early long-lead risk identification, logistics planning, and structured recovery execution across global supply chains.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="capabilities/cm-oem.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="factory" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">CM & OEM Execution Management</h3>
+                    <p class="card-description">Leading execution across contract manufacturers and OEM partners to align capacity, readiness, and delivery across development and production phases.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="capabilities/suppliers.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="handshake" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">Supplier & Partner Execution</h3>
+                    <p class="card-description">Managing execution across tier-1 suppliers through readiness tracking, capacity alignment, and performance-driven accountability.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 7 -->
+            <a href="capabilities/governance.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="layout" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">Program Leadership & Governance</h3>
+                    <p class="card-description">Establishing operating cadence, decision frameworks, and executive visibility to enable predictable execution under changing constraints.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+
+            <!-- Card 8 -->
+            <a href="capabilities/decision-making.html" class="capability-card">
+                <div class="card-icon"><i data-lucide="git-compare" size="24" aria-hidden="true"></i></div>
+                <div class="card-content">
+                    <h3 class="card-title">Cross-Functional Decision Making</h3>
+                    <p class="card-description">Framing trade-offs across engineering, operations, finance, and supply chain to enable timely, data-driven decisions at scale.</p>
+                    <div class="card-link">View details <i data-lucide="arrow-right" size="14" aria-hidden="true"></i></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="info-section">
+            <h2>How to Use These Pages</h2>
+            <p>Each capability page includes what I own, how I execute, and concrete artifacts with business impact. <strong>These pages complement, not replace, role-specific resumes.</strong> They are designed for hiring managers evaluating execution depth.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Continue to">
+            <a href="about.html" class="footer-link">About</a>
+            <a href="experience.html" class="footer-link">Experience</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="footer-left">San Francisco Bay Area · Hardware · Manufacturing · Operations</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/sourabh-tarodekar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
+                <i data-lucide="linkedin" size="16" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="mailto:sourabh232@gmail.com" class="social-link" aria-label="Send email">
+                <i data-lucide="mail" size="16" aria-hidden="true"></i> Email
+            </a>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+</body>
+</html>

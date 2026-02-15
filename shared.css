@@ -1,0 +1,461 @@
+/* ============================================================
+   shared.css — Sourabh Tarodekar Portfolio
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ---------- Design Tokens ---------- */
+:root {
+    --bg-primary: #0c0e12;
+    --bg-secondary: #15181e;
+    --bg-tertiary: #1a1d24;
+    --text-primary: #f0f0f0;
+    --text-secondary: #9ca3af;
+    --text-tertiary: #6b7280;
+    --accent: #b8954f;
+    --accent-subtle: rgba(184, 149, 79, 0.08);
+    --border: rgba(255, 255, 255, 0.06);
+    --border-strong: rgba(255, 255, 255, 0.12);
+    --circuit: rgba(184, 149, 79, 0.04);
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+body.light-mode {
+    --bg-primary: #fafafa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f3f4f6;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-tertiary: #6b7280;
+    --accent: #1e3a5f;
+    --accent-subtle: rgba(30, 58, 95, 0.06);
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.12);
+    --circuit: rgba(30, 58, 95, 0.04);
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+}
+
+/* ---------- Base ---------- */
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   1. PAGE TRANSITION OVERLAY
+   A thin dark overlay sits over every page. On load it fades
+   out (revealing the page). On any internal link click it
+   fades in, then the browser navigates. Result: smooth fade
+   between pages instead of hard cuts.
+   ============================================================ */
+#page-transition {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-primary);
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 1; /* starts visible, JS fades it out */
+    transition: opacity 0.2s ease;
+}
+
+#page-transition.faded {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ============================================================
+   2. ENTRANCE ANIMATIONS
+   Hero elements stagger in on first load. Each child of
+   .hero-animate gets .fade-up class; JS adds .in after a
+   short delay triggering the transition.
+   ============================================================ */
+.fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-up.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger: each sibling fires a bit later */
+.fade-up:nth-child(1) { transition-delay: 0.05s; }
+.fade-up:nth-child(2) { transition-delay: 0.18s; }
+.fade-up:nth-child(3) { transition-delay: 0.30s; }
+.fade-up:nth-child(4) { transition-delay: 0.44s; }
+.fade-up:nth-child(5) { transition-delay: 0.56s; }
+
+/* ============================================================
+   3. AVAILABILITY BADGE
+   "Open to new roles" pill — shown in nav and/or hero
+   ============================================================ */
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--success);
+    letter-spacing: 0.03em;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.22);
+    padding: 0.28rem 0.65rem;
+    border-radius: 100px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+body.light-mode .availability-badge {
+    background: rgba(5, 150, 105, 0.06);
+    border-color: rgba(5, 150, 105, 0.28);
+    color: #059669;
+}
+
+.availability-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--success);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+body.light-mode .availability-badge .dot { background: #059669; }
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1;    transform: scale(1);    }
+    50%       { opacity: 0.4; transform: scale(0.7);  }
+}
+
+/* ============================================================
+   4. RESUME DOWNLOAD BUTTON
+   Shown in nav (desktop) and footer. Styled as a subtle pill
+   that upgrades to filled accent on hover.
+   ============================================================ */
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    background: var(--accent-subtle);
+    border: 1px solid rgba(184, 149, 79, 0.3);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease,
+                border-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.resume-btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+body.light-mode .resume-btn { border-color: rgba(30, 58, 95, 0.3); }
+body.light-mode .resume-btn:hover { color: #ffffff; }
+
+/* ============================================================
+   5. HERO STATS STRIP
+   Three numbers displayed below the subtitle on index.html
+   ============================================================ */
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.hero-stat-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.hero-stat-label {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.hero-stat-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border-strong);
+    flex-shrink: 0;
+}
+
+/* ---------- Circuit Canvas ---------- */
+#circuit-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ---------- Reading Progress Bar ---------- */
+.reading-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 10000;
+    width: 0%;
+    transition: width 0.1s;
+}
+
+/* ---------- Header ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1.5rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    background: rgba(12, 14, 18, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode header { background: rgba(250, 250, 250, 0.85); }
+
+/* ---------- Brand ---------- */
+.brand { display: flex; flex-direction: column; gap: 0.25rem; }
+
+.brand-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.brand-name a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+.brand-name a:hover { opacity: 0.7; }
+
+.brand-role {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* ---------- Nav ---------- */
+nav { display: flex; gap: 2rem; align-items: center; }
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav a:hover { color: var(--text-primary); }
+nav a.active { color: var(--accent); }
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after, nav a.active::after { width: 100%; }
+
+/* Focus */
+nav a:focus-visible, .theme-toggle:focus-visible,
+button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ---------- Theme Toggle ---------- */
+.theme-toggle {
+    background: none; border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+}
+
+.theme-toggle:hover { color: var(--accent); background: var(--accent-subtle); }
+
+/* ---------- Eyebrow ---------- */
+.eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 0.75rem;
+}
+
+.eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background-color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    position: relative; z-index: 10;
+    padding: 3rem 6rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1400px; margin: 0 auto; width: 100%;
+    border-top: 1px solid var(--border);
+    background: var(--bg-primary);
+}
+
+.footer-left { font-size: 0.875rem; color: var(--text-secondary); letter-spacing: 0.02em; }
+.footer-right { display: flex; gap: 1.5rem; align-items: center; }
+
+.social-link {
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 0.875rem; transition: color 0.2s ease;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.social-link:hover { color: var(--accent); }
+
+/* ---------- Back to Top ---------- */
+.back-to-top {
+    position: fixed; bottom: 2rem; right: 2rem;
+    width: 48px; height: 48px;
+    background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease,
+                background-color 0.2s ease, transform 0.2s ease;
+    z-index: 999; color: var(--text-secondary);
+}
+
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--accent); color: var(--bg-primary); border-color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--accent); color: var(--bg-primary);
+    text-decoration: none; font-size: 0.875rem; font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    border: none; cursor: pointer;
+}
+body.light-mode .btn-primary { color: #ffffff; }
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ---------- Mobile Hamburger ---------- */
+.nav-menu-btn {
+    display: none; background: none;
+    border: 1px solid var(--border); color: var(--text-secondary);
+    cursor: pointer; padding: 0.5rem; border-radius: 4px;
+    align-items: center; justify-content: center;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.nav-menu-btn:hover { color: var(--accent); border-color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+    header, footer { padding-left: 3rem; padding-right: 3rem; }
+}
+
+@media (max-width: 768px) {
+    header { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 0; }
+    .brand { flex: 1; }
+    .nav-menu-btn { display: flex; margin-left: auto; }
+    .theme-toggle { margin-left: 0.5rem; }
+
+    /* Hide resume btn & badge inside nav on mobile — shown in footer */
+    nav .resume-btn,
+    header .availability-badge { display: none; }
+
+    nav {
+        width: 100%; max-height: 0; overflow: hidden;
+        flex-direction: column; gap: 0;
+        transition: max-height 0.35s ease;
+        border-top: 0px solid var(--border);
+    }
+    nav.open { max-height: 420px; border-top: 1px solid var(--border); padding: 0.75rem 0; }
+
+    .nav-links { flex-direction: column; gap: 0; width: 100%; align-items: stretch; }
+    .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .nav-links a:last-child { border-bottom: none; }
+
+    .hero-stats { gap: 1.5rem; }
+    .hero-stat-divider { display: none; }
+
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reading-progress, #circuit-canvas { display: none; }
+    .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .availability-badge .dot { animation: none; }
+    #page-transition { transition: none; }
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

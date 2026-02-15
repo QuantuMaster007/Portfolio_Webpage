@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Sourabh Tarodekar — Technical Program Manager for hardware, NPI, CapEx, and operations execution.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c0e12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+
+    <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-pre')</script>
+    <style>.light-pre body,.light-pre{background:#fafafa;color:#111827}</style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sourabh-tarodekar.github.io/contact.html">
+    <meta property="og:title" content="Contact — Sourabh Tarodekar | Technical Program Management">
+    <meta property="og:description" content="Contact Sourabh Tarodekar — Technical Program Manager for hardware, NPI, CapEx, and operations execution.">
+    <meta property="og:site_name" content="Sourabh Tarodekar">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact — Sourabh Tarodekar">
+    <meta name="twitter:description" content="Contact Sourabh Tarodekar — Technical Program Manager for hardware, NPI, CapEx, and operations execution.">
+
+    <title>Contact — Sourabh Tarodekar | Technical Program Management</title>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="shared.css">
+
+    <style>
+        /* ---- Main layout ---- */
+        main {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1 strong { font-weight: 600; }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* ---- Contact Methods ---- */
+        .contact-methods { margin-bottom: 3.5rem; }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: padding-left 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-method:hover { padding-left: 0.5rem; }
+        .contact-method:last-child { border-bottom: none; }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-subtle);
+            border-radius: 8px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .contact-details { flex: 1; }
+
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .contact-method:hover .contact-value { color: var(--accent); }
+
+        .contact-note {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        /* ---- Form Section ---- */
+        .form-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .form-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .form-subtitle {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        input,
+        textarea,
+        select {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.875rem 1rem;
+            font-size: 0.9375rem;
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-subtle);
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .submit-btn {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 0.5rem;
+            font-family: inherit;
+        }
+
+        body.light-mode .submit-btn { color: #ffffff; }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-subtle);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        /* ---- Note ---- */
+        .note {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .note strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 1024px) {
+            main { padding-left: 3rem; padding-right: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            main { padding: 4rem 1.5rem; }
+            h1 { font-size: 1.75rem; }
+            .contact-method { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .submit-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-transition" aria-hidden="true"></div>
+
+    <canvas id="circuit-canvas" aria-hidden="true" data-lines="6" data-grid="100" data-speed="0.08"></canvas>
+
+    <header>
+        <div class="brand">
+            <div class="brand-name"><a href="index.html">Sourabh Tarodekar</a></div>
+            <div class="brand-role">Technical Program Management — Hardware & Operations</div>
+        </div>
+
+        <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
+            <i data-lucide="menu" size="20"></i>
+        </button>
+
+        <nav id="main-nav" aria-label="Site navigation">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="capabilities.html">Capabilities</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html" class="active" aria-current="page">Contact</a>
+            </div>
+            <span class="availability-badge" aria-label="Currently open to new roles">
+                <span class="dot" aria-hidden="true"></span>Open to roles
+            </span>
+            <a href="resume.html" class="resume-btn" aria-label="View resume">
+                <i data-lucide="file-text" size="13" aria-hidden="true"></i> Resume
+            </a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+                <i data-lucide="moon" size="18" id="theme-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="eyebrow">Get in Touch</div>
+        <h1>Let's <strong>Connect</strong></h1>
+        <p class="subtitle">If you'd like to discuss technical program management, NPI execution, capital expenditure strategy, or operations-focused roles, feel free to reach out directly.</p>
+
+        <div class="contact-methods">
+            <a href="mailto:sourabh232@gmail.com" class="contact-method">
+                <div class="contact-icon" aria-hidden="true">
+                    <i data-lucide="mail" size="20"></i>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">sourabh232@gmail.com</div>
+                    <div class="contact-note">Preferred for detailed inquiries</div>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/sourabh-tarodekar/" target="_blank" rel="noopener noreferrer" class="contact-method">
+                <div class="contact-icon" aria-hidden="true">
+                    <i data-lucide="linkedin" size="20"></i>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">linkedin.com/in/sourabh-tarodekar</div>
+                    <div class="contact-note">Professional network & messaging</div>
+                </div>
+            </a>
+
+            <div class="contact-method" style="cursor: default;">
+                <div class="contact-icon" aria-hidden="true">
+                    <i data-lucide="map-pin" size="20"></i>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value" style="color: var(--text-secondary);">San Francisco Bay Area, CA</div>
+                    <div class="contact-note">Open to relocation for strategic roles</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-title">Send a Message</div>
+            <div class="form-subtitle">I personally review all messages. Responses typically within 24–48 hours.</div>
+
+            <form action="https://formspree.io/f/xbddlbzj" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Full name" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required placeholder="email@company.com" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Topic</label>
+                    <select id="topic" name="topic" required>
+                        <option value="" disabled selected>Select a topic</option>
+                        <option value="opportunity">Career Opportunity</option>
+                        <option value="capability">Capability Discussion</option>
+                        <option value="collaboration">Collaboration</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required placeholder="Briefly describe your inquiry, relevant role, or how I can help..."></textarea>
+                </div>
+
+                <input type="hidden" name="source" value="Portfolio Contact Page">
+                <input type="hidden" name="_subject" value="New inquiry from portfolio">
+
+                <button type="submit" class="submit-btn">
+                    Send Message
+                    <i data-lucide="arrow-right" size="16" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="note" role="note">
+            <strong>Note:</strong> If your inquiry is related to a specific capability (CapEx, NPI, Supply Chain, etc.), mentioning it helps me respond with relevant context. For urgent matters, email is preferred over form.
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">San Francisco Bay Area · Hardware · Manufacturing · Operations</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/sourabh-tarodekar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
+                <i data-lucide="linkedin" size="16" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="mailto:sourabh232@gmail.com" class="social-link" aria-label="Send email">
+                <i data-lucide="mail" size="16" aria-hidden="true"></i> Email
+            </a>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+</body>
+</html>

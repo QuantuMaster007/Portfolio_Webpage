@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sourabh Tarodekar - Resume</title>
+    <style>
+        /* Print-optimized styles */
+        @page {
+            size: letter;
+            margin: 0.5in;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #111;
+            max-width: 8in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+        
+        /* Hide interactive elements */
+        .no-print, nav, footer, #circuit-canvas, .theme-toggle {
+            display: none !important;
+        }
+        
+        /* Clean typography */
+        h1 { font-size: 18pt; margin: 0 0 6pt; letter-spacing: -0.02em; }
+        h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: 0.05em; 
+             border-bottom: 1pt solid #333; padding-bottom: 4pt; margin: 16pt 0 8pt; }
+        h3 { font-size: 10pt; margin: 10pt 0 4pt; }
+        
+        .contact-line { font-size: 9pt; color: #555; margin-bottom: 12pt; }
+        
+        .role { margin-bottom: 12pt; }
+        .role-header { display: flex; justify-content: space-between; margin-bottom: 4pt; }
+        .role-title { font-weight: 600; }
+        .role-company { color: #555; }
+        .role-date { color: #777; font-size: 9pt; }
+        
+        ul { margin: 4pt 0; padding-left: 14pt; }
+        li { margin-bottom: 2pt; }
+        
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; }
+        .skill-category { font-weight: 600; }
+        
+        @media print {
+            body { padding: 0; }
+            a { text-decoration: none; color: #111; }
+            a::after { content: " (" attr(href) ")"; font-size: 8pt; color: #666; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sourabh Tarodekar</h1>
+        <div class="contact-line">
+            Technical Program Management — Hardware & Operations · San Francisco Bay Area<br>
+            sourabh232@gmail.com · linkedin.com/in/sourabh-tarodekar
+        </div>
+    </header>
+    
+    <section>
+        <h2>Professional Summary</h2>
+        <p>Technical Program Manager with 7+ years driving complex, capital-intensive hardware programs across semiconductor capital equipment and automotive NPI. Expertise in $32M+ CapEx portfolio management, engineering build readiness, and global supply chain execution. PMP certified with MBA in Operations and MS in Business Analytics.</p>
+    </section>
+    
+    <section>
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+            <div>
+                <span class="skill-category">Program Execution:</span> NPI/EVT/DVT/PVT, CTB, BOM/ECO governance
+            </div>
+            <div>
+                <span class="skill-category">Capital Strategy:</span> CapEx planning, ROI/TCO analysis, equipment reuse
+            </div>
+            <div>
+                <span class="skill-category">Supply Chain:</span> Long-lead mitigation, supplier management, logistics
+            </div>
+            <div>
+                <span class="skill-category">Manufacturing:</span> CM/OEM readiness, line validation, capacity planning
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Professional Experience</h2>
+        
+        <div class="role">
+            <div class="role-header">
+                <div>
+                    <span class="role-title">Technical Program Manager (E-III / E-II)</span> — 
+                    <span class="role-company">Applied Materials, Inc.</span>
+                </div>
+                <span class="role-date">Jun 2022 – Present | Santa Clara, CA</span>
+            </div>
+            <ul>
+                <li>Own $32M+ annual CapEx portfolio across global facilities; improved forecast accuracy 12–15% via demand signal alignment</li>
+                <li>Lead EVT/DVT/PVT engineering builds for multi-module semiconductor systems; achieved 92–98% CTB completeness</li>
+                <li>Manage execution across CM/OEM partners in US, China, Taiwan, Vietnam; improved OTD 18% via standardized readiness criteria</li>
+                <li>Drive supplier performance optimization; reduced lead-time variability 30% through dual-sourcing and scorecarding</li>
+                <li>Deliver $1.4M+ capital efficiency through equipment reuse ($800K) and vendor consolidation ($600K)</li>
+            </ul>
+        </div>
+        
+        <div class="role">
+            <div class="role-header">
+                <div>
+                    <span class="role-title">Engineering Project Manager</span> — 
+                    <span class="role-company">Ford Motor Company</span>
+                </div>
+                <span class="role-date">Jun 2017 – Aug 2020 | Detroit, MI</span>
+            </div>
+            <ul>
+                <li>Managed global suspension and chassis systems engineering through prototype to production transitions</li>
+                <li>Led supplier execution and cost control for high-dependency launch programs</li>
+            </ul>
+        </div>
+        
+        <div class="role">
+            <div class="role-header">
+                <div>
+                    <span class="role-title">Associate Project Engineer</span> — 
+                    <span class="role-company">Jahdao Gears Pvt. Ltd.</span>
+                </div>
+                <span class="role-date">Aug 2016 – May 2017 | India</span>
+            </div>
+            <ul>
+                <li>Managed shop-floor operations, vendor sourcing, and production KPI visibility</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Education & Certifications</h2>
+        <ul>
+            <li><strong>MBA, Operations</strong> — [University Name]</li>
+            <li><strong>MS, Business Analytics</strong> — [University Name]</li>
+            <li><strong>PMP Certification</strong> — Project Management Institute</li>
+            <li><strong>BS, Mechanical Engineering</strong> — [University Name]</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>Selected Impact Metrics</h2>
+        <ul>
+            <li>35% reduction in build churn through CTB process implementation</li>
+            <li>30% faster FA resolution via structured escalation protocols</li>
+            <li>27–30% reduction in non-compliant CapEx spend via early governance</li>
+            <li>95% schedule adherence (up from 82%) through unified operating cadence</li>
+        </ul>
+    </section>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical Program Management for complex, capital-intensive hardware programs spanning engineering execution, build readiness, capital expenditure strategy, and global operations.">
+    <meta name="theme-color" content="#0c0e12">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c0e12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+
+    <script>if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-pre')}</script>
+    <style>.light-pre body,.light-pre{background:#fafafa;color:#111827}</style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sourabh-tarodekar.github.io/">
+    <meta property="og:title" content="Sourabh Tarodekar — Technical Program Management | Hardware & Operations">
+    <meta property="og:description" content="Technical Program Management for complex, capital-intensive hardware programs spanning engineering execution, build readiness, capital expenditure strategy, and global operations.">
+    <meta property="og:site_name" content="Sourabh Tarodekar">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sourabh Tarodekar — Technical Program Management | Hardware & Operations">
+    <meta name="twitter:description" content="Technical Program Management for complex, capital-intensive hardware programs.">
+
+    <title>Sourabh Tarodekar — Technical Program Management | Hardware & Operations</title>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="shared.css">
+
+    <style>
+        /* ---- Index-specific: non-sticky header blends into hero ---- */
+        header {
+            position: relative;
+            padding-top: 3.5rem;
+            padding-bottom: 2rem;
+            align-items: center;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
+        }
+        body.light-mode header { background: transparent; }
+
+        #circuit-canvas { opacity: 0.6; }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            padding: 2rem 6rem 5rem;
+        }
+
+        .hero { max-width: 860px; text-align: left; }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+        h1 strong { font-weight: 600; }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 620px;
+            line-height: 1.75;
+            font-weight: 400;
+        }
+
+        .cta {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s ease;
+        }
+        .btn-secondary:hover { color: var(--text-primary); }
+
+        /* Hero availability badge — larger than nav version */
+        .hero .availability-badge {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.8rem;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+        }
+
+        footer {
+            background: transparent;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 1024px) { main { padding: 2rem 3rem 4rem; } }
+        @media (max-width: 768px) {
+            header { padding-top: 1.5rem; padding-bottom: 1rem; }
+            main { padding: 3rem 1.5rem 4rem; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page transition overlay — fades out on load, in on navigation -->
+    <div id="page-transition" aria-hidden="true"></div>
+
+    <canvas id="circuit-canvas" aria-hidden="true" data-lines="15" data-grid="80" data-speed="0.15"></canvas>
+
+    <header>
+        <div class="brand">
+            <div class="brand-name">Sourabh Tarodekar</div>
+            <div class="brand-role">Technical Program Management — Hardware & Operations</div>
+        </div>
+
+        <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
+            <i data-lucide="menu" size="20"></i>
+        </button>
+
+        <nav id="main-nav" aria-label="Site navigation">
+            <div class="nav-links">
+                <a href="index.html" class="active" aria-current="page">Home</a>
+                <a href="about.html">About</a>
+                <a href="capabilities.html">Capabilities</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <!-- Availability badge visible in nav on desktop -->
+            <span class="availability-badge" aria-label="Currently open to new roles">
+                <span class="dot" aria-hidden="true"></span>Open to roles
+            </span>
+            <a href="resume.html" class="resume-btn" aria-label="View resume">
+                <i data-lucide="file-text" size="13" aria-hidden="true"></i> Resume
+            </a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+                <i data-lucide="moon" size="18" id="theme-icon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+
+            <!-- Eyebrow — animates first -->
+            <div class="eyebrow fade-up">Technical Program Management</div>
+
+            <!-- Availability badge in hero — visible on mobile too -->
+            <a href="contact.html" class="availability-badge fade-up" aria-label="Open to new roles — click to contact">
+                <span class="dot" aria-hidden="true"></span>Open to new opportunities
+            </a>
+
+            <!-- Headline -->
+            <h1 class="fade-up">
+                Driving complex hardware programs<br>from <strong>concept to scale</strong>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="subtitle fade-up">
+                Leading cross-functional engineering execution, build readiness, capital expenditure strategy,
+                and global supply chain delivery across capital-intensive hardware programs.
+            </p>
+
+            <!-- CTA buttons -->
+            <div class="cta fade-up">
+                <a href="capabilities.html" class="btn-primary">View Execution Capabilities</a>
+                <a href="contact.html" class="btn-secondary">
+                    Get in touch <i data-lucide="arrow-right" size="16" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <!-- Hero stats strip — the 3 numbers that stop scrolling -->
+            <div class="hero-stats fade-up" role="list" aria-label="Career highlights">
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-number">$50M+</span>
+                    <span class="hero-stat-label">Capital Managed</span>
+                </div>
+                <div class="hero-stat-divider" aria-hidden="true"></div>
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-number">7+</span>
+                    <span class="hero-stat-label">Years Experience</span>
+                </div>
+                <div class="hero-stat-divider" aria-hidden="true"></div>
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-number">Applied Materials · Ford</span>
+                    <span class="hero-stat-label">Key Employers</span>
+                </div>
+                <div class="hero-stat-divider" aria-hidden="true"></div>
+                <div class="hero-stat" role="listitem">
+                    <span class="hero-stat-number">PMP</span>
+                    <span class="hero-stat-label">Certified</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">San Francisco Bay Area · Hardware · Manufacturing · Operations</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/sourabh-tarodekar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
+                <i data-lucide="linkedin" size="16" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="mailto:sourabh232@gmail.com" class="social-link" aria-label="Email Sourabh">
+                <i data-lucide="mail" size="16" aria-hidden="true"></i> Email
+            </a>
+            <a href="resume.html" class="resume-btn" aria-label="View resume">
+                <i data-lucide="file-text" size="13" aria-hidden="true"></i> Resume
+            </a>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+</body>
+</html>
