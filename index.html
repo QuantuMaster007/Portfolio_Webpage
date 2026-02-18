@@ -3,582 +3,588 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sourabh Tarodekar — Technical Program Manager specializing in Hardware Infrastructure, Semiconductor Systems, CapEx & Capacity Planning.">
+<meta name="theme-color" content="#080a0f">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23080a0f'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sourabh-tarodekar.github.io/">
+<meta property="og:title" content="Sourabh Tarodekar — Technical Program Manager">
+<meta property="og:description" content="Hardware Infrastructure · Semiconductor Systems · CapEx & Capacity Planning">
 
 <title>Sourabh Tarodekar — Technical Program Manager</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===============================
-DESIGN TOKENS
-=============================== */
-
-:root{
-
---bg:#080a0f;
---surface:#0f1117;
---text:#f0f2f7;
---text-mid:#8b95a8;
---text-dim:#4a5168;
---accent:#b8954f;
-
---border-subtle:rgba(255,255,255,0.08);
---border-glow:rgba(184,149,79,0.2);
-
---mono:'JetBrains Mono', monospace;
-
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --bg:       #080a0f;
+  --surface:  #0f1117;
+  --surface2: #161b24;
+  --text:     #f0f2f7;
+  --text-mid: #8b95a8;
+  --text-dim: #4a5168;
+  --accent:   #b8954f;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --mono:     'JetBrains Mono', monospace;
+}
+body.light-mode {
+  --bg:       #f0f2f6;
+  --surface:  #ffffff;
+  --surface2: #e8ebf2;
+  --text:     #090c12;
+  --text-mid: #4a5568;
+  --text-dim: #8896aa;
+  --accent:   #1e40af;
+  --border:   rgba(0,0,0,0.08);
+  --border2:  rgba(0,0,0,0.14);
+}
+body.exec-mode {
+  --bg:       #020917;
+  --surface:  #071228;
+  --surface2: #0d1f3c;
+  --text:     #dce6f8;
+  --text-mid: #8892b0;
+  --text-dim: #445070;
+  --accent:   #38bdf8;
+  --border:   rgba(56,189,248,0.10);
+  --border2:  rgba(56,189,248,0.18);
 }
 
-body.light-mode{
+/* ═══════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
---bg:#ffffff;
---surface:#f8fafc;
---text:#0f172a;
---text-mid:#475569;
---text-dim:#64748b;
---accent:#1e40af;
-
---border-subtle:rgba(0,0,0,0.12);
---border-glow:rgba(30,64,175,0.25);
-
+html, body {
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s ease, color 0.3s ease;
 }
 
-body.exec-mode{
-
---bg:#020617;
---surface:#0f172a;
---text:#f8fafc;
---text-mid:#94a3b8;
---text-dim:#475569;
---accent:#38bdf8;
-
---border-subtle:rgba(56,189,248,0.25);
---border-glow:rgba(56,189,248,0.35);
-
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+body.light-mode::before {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px);
 }
 
-/* ===============================
-BASE
-=============================== */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+.shell {
+  position: relative; z-index: 1;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 2.5rem 5rem;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-body{
-
-background:var(--bg);
-color:var(--text);
-
-font-family:'Outfit',system-ui,sans-serif;
-
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-
-transition:background .35s,color .35s;
-
+/* ═══════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════ */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
 }
 
-/* ===============================
-CONTAINER
-=============================== */
-
-.shell{
-
-width:100%;
-max-width:1500px;
-
-padding:40px 60px;
-
-display:flex;
-flex-direction:column;
-gap:40px;
-
+.brand { display: flex; flex-direction: column; gap: 0; }
+.brand-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1;
+}
+.brand-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+.brand-spec {
+  font-family: var(--mono);
+  font-size: 0.57rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
 }
 
-/* ===============================
-HEADER
-=============================== */
+.header-right { display: flex; align-items: center; gap: 2rem; }
+nav { display: flex; align-items: center; gap: 1.75rem; }
 
-header{
+nav a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 2px;
+}
+nav a::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+nav a:hover { color: var(--text); }
+nav a.active { color: var(--accent); }
+nav a.active::after, nav a:hover::after { width: 100%; }
 
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
+.theme-btn {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--text-mid);
+  padding: 0.42rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex; align-items: center; gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+.theme-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.theme-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
 
-border-bottom:1px solid var(--border-subtle);
-
-padding-bottom:20px;
-
+/* ═══════════════════════════════════════════════
+   MAIN
+═══════════════════════════════════════════════ */
+main {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 5rem;
+  align-items: center;
 }
 
-/* BRAND */
+.hero-left { display: flex; flex-direction: column; }
 
-.brand{
-
-display:flex;
-flex-direction:column;
-gap:6px;
-
+.label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: up 0.5s ease forwards 0.05s;
+}
+.label::before {
+  content: '';
+  display: block; width: 28px; height: 1px;
+  background: var(--accent); flex-shrink: 0;
 }
 
-.brand-name{
-
-font-size:20px;
-font-weight:800;
-letter-spacing:.08em;
-text-transform:uppercase;
-
+h1 {
+  font-size: clamp(2rem, 3.3vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.10;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: up 0.55s ease forwards 0.16s;
 }
 
-.brand-title{
-
-font-size:13px;
-color:var(--accent);
-font-weight:600;
-
+.description {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.82;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  max-width: 520px;
+  opacity: 0; animation: up 0.55s ease forwards 0.28s;
 }
 
-.brand-spec{
-
-font-family:var(--mono);
-font-size:12px;
-color:var(--text-dim);
-
-white-space:nowrap;
-
+.cta-row {
+  display: flex; align-items: center; gap: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0; animation: up 0.5s ease forwards 0.38s;
 }
 
-/* RIGHT SIDE */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.72rem 1.65rem;
+  background: var(--accent); color: var(--bg);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+  text-decoration: none; text-transform: uppercase;
+  border-radius: 2px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-primary:hover { opacity: 0.84; transform: translateY(-1px); }
+body.exec-mode .btn-primary { color: #020917; }
 
-.header-right{
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--text-mid); text-decoration: none;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--accent); }
+.btn-ghost svg { transition: transform 0.2s; }
+.btn-ghost:hover svg { transform: translateX(3px); }
 
-display:flex;
-align-items:center;
-gap:10px;
+.badge-row {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  opacity: 0; animation: up 0.5s ease forwards 0.48s;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 0.59rem; font-weight: 500;
+  padding: 0.36rem 0.82rem;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  color: var(--text-mid);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+.badge:hover { border-color: var(--accent); color: var(--text); }
 
-margin-left:auto;
+/* ═══════════════════════════════════════════════
+   STATS GRID
+═══════════════════════════════════════════════ */
+.hero-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px solid var(--border2);
+  box-shadow: 0 0 80px rgba(184,149,79,0.04);
+  opacity: 0; animation: fadein 0.65s ease forwards 0.28s;
+}
+body.exec-mode .hero-right { box-shadow: 0 0 80px rgba(56,189,248,0.04); }
 
+.stat-sq {
+  background: var(--surface);
+  padding: 1.35rem 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+  position: relative;
+  transition: background 0.2s;
+  cursor: default;
+}
+.stat-sq:nth-child(2n)            { border-right: none; }
+.stat-sq:nth-child(5),
+.stat-sq:nth-child(6)             { border-bottom: none; }
+
+/* Wide last row — spans both columns */
+.stat-sq.wide {
+  grid-column: 1 / -1;
+  border-right: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+}
+.wide-left { display: flex; flex-direction: column; gap: 0.2rem; }
+
+/* Hover accent top line */
+.stat-sq::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.stat-sq:hover { background: var(--surface2); }
+.stat-sq:hover::before { opacity: 1; }
+
+.sq-tag {
+  font-family: var(--mono);
+  font-size: 0.52rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 0.35rem;
+}
+.sq-val {
+  font-family: var(--mono);
+  font-size: 1.65rem; font-weight: 700;
+  color: var(--text); line-height: 1; letter-spacing: -0.04em;
+  margin-bottom: 0.3rem;
+}
+.sq-lbl { font-size: 0.60rem; color: var(--text-mid); line-height: 1.4; }
+
+.wide-right {
+  font-family: var(--mono);
+  font-size: 1.9rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.04em;
+  flex-shrink: 0; line-height: 1;
 }
 
-/* NAV BUTTONS */
-
-.nav-btn{
-
-color:var(--text-mid);
-text-decoration:none;
-
-font-size:12px;
-font-weight:600;
-
-padding:7px 14px;
-
-border:1px solid var(--border-subtle);
-
-border-radius:4px;
-
-transition:.25s;
-
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  opacity: 0; animation: fadein 0.5s ease forwards 0.55s;
 }
 
-.nav-btn:hover{
+.meta {
+  font-family: var(--mono);
+  font-size: 0.59rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.meta svg { width: 11px; height: 11px; flex-shrink: 0; opacity: 0.6; }
 
-color:var(--accent);
+.links { display: flex; gap: 1.75rem; align-items: center; }
 
-border-color:var(--accent);
+.links a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.61rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 0.42rem;
+  transition: color 0.2s;
+}
+.links a:hover { color: var(--accent); }
+.links a svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-background:var(--surface);
-
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-/* THEME BUTTON */
-
-.theme-btn{
-
-color:var(--text-mid);
-
-background:transparent;
-
-border:1px solid var(--border-subtle);
-
-padding:7px 14px;
-
-font-size:12px;
-font-family:var(--mono);
-
-border-radius:4px;
-
-cursor:pointer;
-
-transition:.25s;
-
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .shell { padding: 2.5rem 3rem; }
+  main { gap: 3rem; }
 }
-
-.theme-btn:hover{
-
-color:var(--accent);
-
-border-color:var(--accent);
-
-background:var(--surface);
-
+@media (max-width: 900px) {
+  html, body { height: auto; overflow: auto; }
+  .shell { padding: 2rem; height: auto; }
+  main { grid-template-columns: 1fr; gap: 2.5rem; }
+  nav { display: none; }
+  .hero-right { grid-template-rows: auto; }
 }
-
-/* ===============================
-MAIN
-=============================== */
-
-main{
-
-display:grid;
-
-grid-template-columns:1.2fr .8fr;
-
-gap:60px;
-
-align-items:center;
-
-}
-
-/* LEFT */
-
-.hero-left{
-
-display:flex;
-flex-direction:column;
-gap:20px;
-
-}
-
-.hero-left h1{
-
-font-size:48px;
-font-weight:800;
-
-line-height:1.1;
-
-}
-
-.hero-left .highlight{
-
-color:var(--accent);
-
-}
-
-.description{
-
-font-size:18px;
-color:var(--text-mid);
-line-height:1.6;
-
-max-width:600px;
-
-}
-
-/* BADGES */
-
-.badge-row{
-
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-
-}
-
-.badge{
-
-font-family:var(--mono);
-
-font-size:12px;
-
-padding:6px 12px;
-
-border:1px solid var(--border-subtle);
-
-color:var(--text-mid);
-
-transition:.25s;
-
-}
-
-.badge:hover{
-
-color:var(--accent);
-
-border-color:var(--accent);
-
-background:var(--surface);
-
-}
-
-/* ===============================
-RIGHT STATS
-=============================== */
-
-.hero-right{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:14px;
-
-}
-
-.stat{
-
-border:1px solid var(--border-subtle);
-
-padding:20px;
-
-background:var(--surface);
-
-transition:.25s;
-
-}
-
-.stat:hover{
-
-border-color:var(--accent);
-
-box-shadow:0 0 20px var(--border-glow);
-
-}
-
-.stat-tag{
-
-font-family:var(--mono);
-
-font-size:11px;
-
-color:var(--text-dim);
-
-}
-
-.stat-value{
-
-font-size:28px;
-font-weight:700;
-
-margin-top:5px;
-
-}
-
-.stat-label{
-
-font-size:13px;
-color:var(--text-mid);
-
-}
-
-/* ===============================
-FOOTER
-=============================== */
-
-footer{
-
-display:flex;
-justify-content:space-between;
-
-border-top:1px solid var(--border-subtle);
-
-padding-top:20px;
-
-}
-
-.links{
-
-display:flex;
-gap:15px;
-
-}
-
-.links a{
-
-color:var(--text-mid);
-
-text-decoration:none;
-
-font-size:13px;
-
-transition:.25s;
-
-}
-
-.links a:hover{
-
-color:var(--accent);
-
-}
-
-/* ===============================
-RESPONSIVE
-=============================== */
-
-@media(max-width:1100px){
-
-main{
-
-grid-template-columns:1fr;
-
-}
-
-.hero-right{
-
-grid-template-columns:1fr 1fr;
-
-}
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <div class="shell">
 
-<header>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="brand-name">Sourabh Tarodekar</div>
+      <div class="brand-title">Technical Program Manager</div>
+      <div class="brand-spec">Hardware Infrastructure · Semiconductor Systems · CapEx &amp; Capacity Planning</div>
+    </div>
 
-<div class="brand">
+    <div class="header-right">
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="capabilities.html">Capabilities</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html">Resume</a>
+      </nav>
+      <button class="theme-btn" onclick="cycleTheme()" id="themeBtn">
+        <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </header>
 
-<div class="brand-name">
-Sourabh Tarodekar
-</div>
+  <!-- MAIN -->
+  <main>
 
-<div class="brand-title">
-Technical Program Manager
-</div>
+    <!-- LEFT: Hero -->
+    <section class="hero-left">
+      <div class="label">Technical Program Manager</div>
 
-<div class="brand-spec">
-Hardware Infrastructure · Semiconductor Systems · CapEx & Capacity Planning
-</div>
+      <h1>Driving complex hardware programs from concept to manufacturing scale.</h1>
 
-</div>
+      <p class="description">
+        Leading cross-functional engineering execution, infrastructure readiness,
+        capital equipment deployment, and capacity scaling across semiconductor
+        manufacturing environments.
+      </p>
 
-<div class="header-right">
+      <div class="cta-row">
+        <a href="capabilities.html" class="btn-primary">
+          View Execution Capabilities
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <a href="contact.html" class="btn-ghost">
+          Get in touch
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
 
-<a class="nav-btn" href="#">About</a>
+      <div class="badge-row">
+        <span class="badge">Applied Materials</span>
+        <span class="badge">Ford Motor Company</span>
+        <span class="badge">PMP®</span>
+        <span class="badge">7+ Years Exp</span>
+      </div>
+    </section>
 
-<a class="nav-btn" href="#">Capabilities</a>
+    <!-- RIGHT: Stats -->
+    <section class="hero-right">
 
-<a class="nav-btn" href="#">Experience</a>
+      <div class="stat-sq">
+        <div class="sq-tag">CapEx</div>
+        <div class="sq-val">$63M+</div>
+        <div class="sq-lbl">Portfolio Managed</div>
+      </div>
 
-<a class="nav-btn" href="#">Contact</a>
+      <div class="stat-sq">
+        <div class="sq-tag">Delivery</div>
+        <div class="sq-val">161+</div>
+        <div class="sq-lbl">Systems Delivered</div>
+      </div>
 
-<a class="nav-btn" href="#">Resume</a>
+      <div class="stat-sq">
+        <div class="sq-tag">NPI</div>
+        <div class="sq-val">6</div>
+        <div class="sq-lbl">Programs Led</div>
+      </div>
 
-<button class="theme-btn" id="themeBtn">
-Mode
-</button>
+      <div class="stat-sq">
+        <div class="sq-tag">Analytics</div>
+        <div class="sq-val">48K+</div>
+        <div class="sq-lbl">Ops Records Analyzed</div>
+      </div>
 
-</div>
+      <div class="stat-sq wide">
+        <div class="wide-left">
+          <div class="sq-tag">On-Time Delivery Rate</div>
+          <div class="sq-lbl">Maintained across all active programs</div>
+        </div>
+        <div class="wide-right">95%+</div>
+      </div>
 
-</header>
+    </section>
+  </main>
 
-<main>
+  <!-- FOOTER -->
+  <footer>
+    <div class="meta">
+      <!-- Location pin icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      SF BAY AREA, CA &nbsp;·&nbsp; <span id="year"></span>
+    </div>
 
-<div class="hero-left">
+    <div class="links">
 
-<h1>
-Driving capital-intensive hardware programs from concept to
-<span class="highlight">
-manufacturing scale
-</span>
-</h1>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/sourabh232/" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
 
-<div class="description">
-Owning end-to-end execution of capital equipment programs, including semiconductor infrastructure deployment, manufacturing readiness, and capacity scaling across global hardware environments.
-</div>
+      <!-- GitHub -->
+      <a href="https://github.com/QuantuMaster007" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        GitHub
+      </a>
 
-<div class="badge-row">
+      <!-- Email -->
+      <a href="mailto:sourabh232@gmail.com">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Email
+      </a>
 
-<div class="badge">Applied Materials</div>
-
-<div class="badge">Ford Motor Company</div>
-
-<div class="badge">PMP®</div>
-
-<div class="badge">7+ Years Experience</div>
-
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<div class="stat">
-<div class="stat-tag">CapEx</div>
-<div class="stat-value">$63M+</div>
-<div class="stat-label">Portfolio Managed</div>
-</div>
-
-<div class="stat">
-<div class="stat-tag">Delivery</div>
-<div class="stat-value">161+</div>
-<div class="stat-label">Systems Delivered</div>
-</div>
-
-<div class="stat">
-<div class="stat-tag">Programs</div>
-<div class="stat-value">6</div>
-<div class="stat-label">Infrastructure Programs Led</div>
-</div>
-
-<div class="stat">
-<div class="stat-tag">Analytics</div>
-<div class="stat-value">48K+</div>
-<div class="stat-label">Operations Records Analyzed</div>
-</div>
-
-</div>
-
-</main>
-
-<footer>
-
-<div>
-SF Bay Area, CA · <span id="year"></span>
-</div>
-
-<div class="links">
-
-<a href="https://linkedin.com">LinkedIn</a>
-
-<a href="https://github.com">GitHub</a>
-
-<a href="mailto:sourabh232@gmail.com">Email</a>
-
-</div>
-
-</footer>
+    </div>
+  </footer>
 
 </div>
 
 <script>
+  /* Year */
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("year").textContent=new Date().getFullYear();
+  /* 3-way theme cycle — persists via localStorage so all pages inherit */
+  const CYCLE  = ['', 'light-mode', 'exec-mode'];
+  const ICONS  = {
+    '':           `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`,
+    'light-mode': `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`,
+    'exec-mode':  `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`,
+  };
+  const LABELS = { '': 'Dark', 'light-mode': 'Light', 'exec-mode': 'Exec' };
 
-const themes=["","light-mode","exec-mode"];
-let t=0;
+  let current = localStorage.getItem('theme') || '';
 
-document.getElementById("themeBtn").onclick=function(){
+  function applyTheme(t) {
+    document.body.className = t;
+    current = t;
+    document.getElementById('themeIcon').innerHTML = ICONS[t];
+    document.getElementById('themeLabel').textContent = LABELS[t];
+    localStorage.setItem('theme', t);
+  }
 
-t=(t+1)%themes.length;
+  function cycleTheme() {
+    applyTheme(CYCLE[(CYCLE.indexOf(current) + 1) % CYCLE.length]);
+  }
 
-document.body.className=themes[t];
-
-};
-
+  /* Apply on load — no flash */
+  applyTheme(current);
 </script>
 
 </body>
