@@ -1,155 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sourabh Tarodekar - Resume</title>
-    <style>
-        /* Print-optimized styles */
-        @page {
-            size: letter;
-            margin: 0.5in;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            font-size: 10pt;
-            line-height: 1.4;
-            color: #111;
-            max-width: 8in;
-            margin: 0 auto;
-            padding: 0.5in;
-        }
-        
-        /* Hide interactive elements */
-        .no-print, nav, footer, #circuit-canvas, .theme-toggle {
-            display: none !important;
-        }
-        
-        /* Clean typography */
-        h1 { font-size: 18pt; margin: 0 0 6pt; letter-spacing: -0.02em; }
-        h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: 0.05em; 
-             border-bottom: 1pt solid #333; padding-bottom: 4pt; margin: 16pt 0 8pt; }
-        h3 { font-size: 10pt; margin: 10pt 0 4pt; }
-        
-        .contact-line { font-size: 9pt; color: #555; margin-bottom: 12pt; }
-        
-        .role { margin-bottom: 12pt; }
-        .role-header { display: flex; justify-content: space-between; margin-bottom: 4pt; }
-        .role-title { font-weight: 600; }
-        .role-company { color: #555; }
-        .role-date { color: #777; font-size: 9pt; }
-        
-        ul { margin: 4pt 0; padding-left: 14pt; }
-        li { margin-bottom: 2pt; }
-        
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; }
-        .skill-category { font-weight: 600; }
-        
-        @media print {
-            body { padding: 0; }
-            a { text-decoration: none; color: #111; }
-            a::after { content: " (" attr(href) ")"; font-size: 8pt; color: #666; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Resume — Sourabh Tarodekar, Technical Program Manager specializing in Hardware Infrastructure, CapEx, and NPI.">
+<meta name="theme-color" content="#080a0f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23080a0f'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+<title>Resume — Sourabh Tarodekar | Technical Program Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080a0f;--surface:#0f1117;--surface2:#161b24;--text:#ffffff;--text-mid:#a0aec0;--text-dim:#4a5168;--accent:#b8954f;--accent-glow:rgba(184,149,79,.18);--accent-dim:rgba(184,149,79,.08);--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.15);--mono:'JetBrains Mono',monospace}
+body.light-mode{--bg:#f8fafc;--surface:#fff;--surface2:#f1f5f9;--text:#0f172a;--text-mid:#475569;--text-dim:#94a3b8;--accent:#1e40af;--accent-glow:rgba(30,64,175,.14);--accent-dim:rgba(30,64,175,.06);--border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.13)}
+body.exec-mode{--bg:#020617;--surface:#0f172a;--surface2:#1e293b;--text:#f8fafc;--text-mid:#94a3b8;--text-dim:#475569;--accent:#38bdf8;--accent-glow:rgba(56,189,248,.18);--accent-dim:rgba(56,189,248,.07);--border:rgba(56,189,248,.12);--border2:rgba(56,189,248,.25)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{overflow-y:auto;min-height:100%}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;transition:background .4s,color .3s}
+body::after{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,var(--accent) 30%,var(--accent) 70%,transparent 100%);z-index:1000;opacity:.85}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,var(--border) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;opacity:.55;z-index:0}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 5rem;background:rgba(8,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .3s}
+body.light-mode header{background:rgba(248,250,252,.88)} body.exec-mode header{background:rgba(2,6,23,.88)}
+.brand{display:flex;flex-direction:column}
+.brand-name{font-size:1rem;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--text);line-height:1;cursor:default;transition:color .2s} .brand-name:hover{color:var(--accent)}
+.brand-title{font-size:.65rem;font-weight:600;color:var(--accent);letter-spacing:.10em;text-transform:uppercase;margin-top:5px}
+.brand-spec{font-family:var(--mono);font-size:.55rem;color:var(--text-dim);margin-top:4px}
+.header-right{display:flex;align-items:center;gap:2rem}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{color:var(--text-mid);text-decoration:none;font-size:.73rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;transition:color .2s;position:relative;padding-bottom:3px}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--accent);border-radius:2px;transition:width .3s cubic-bezier(.4,0,.2,1)}
+nav a:hover{color:var(--text)} nav a.active{color:var(--accent)} nav a.active::after,nav a:hover::after{width:100%}
+.theme-btn{background:transparent;border:1px solid var(--border2);color:var(--text-mid);padding:.42rem 1rem;font-family:var(--mono);font-size:.57rem;font-weight:500;letter-spacing:.10em;cursor:pointer;border-radius:40px;display:flex;align-items:center;gap:.42rem;transition:border-color .25s,color .25s,background .25s,transform .2s;text-transform:uppercase;white-space:nowrap}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-1px)}
+.theme-btn svg{width:11px;height:11px;flex-shrink:0;transition:transform .35s} .theme-btn:hover svg{transform:rotate(30deg)}
+.kbd-hint{font-family:var(--mono);font-size:.46rem;color:var(--text-dim);border:1px solid var(--border2);padding:.1rem .3rem;border-radius:3px;opacity:.7;transition:opacity .2s} .theme-btn:hover .kbd-hint{opacity:1}
+
+/* PAGE */
+.page-wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:3.5rem 2rem 5rem}
+
+/* TOP BAR */
+.top-bar{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.eyebrow{font-family:var(--mono);font-size:.65rem;font-weight:500;color:var(--accent);letter-spacing:.28em;text-transform:uppercase;display:flex;align-items:center;gap:.8rem;margin-bottom:.75rem}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0}
+h1{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:var(--text)}
+h1 span{color:var(--accent)}
+.btn-print{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.8rem 1.6rem;background:var(--accent);color:var(--bg);
+  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border:none;border-radius:4px;cursor:pointer;font-family:'Outfit',sans-serif;
+  box-shadow:0 4px 20px var(--accent-glow);flex-shrink:0;
+  transition:transform .25s,box-shadow .25s;
+}
+body.exec-mode .btn-print{color:#020617} body.light-mode .btn-print{color:#fff}
+.btn-print:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--accent-glow)}
+.btn-print svg{width:14px;height:14px}
+
+/* RESUME CARD */
+.resume-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+
+/* RESUME HEADER BLOCK */
+.r-header{
+  padding:2.5rem 3rem;border-bottom:1px solid var(--border);
+  background:linear-gradient(135deg,var(--surface2) 0%,var(--surface) 100%);
+  position:relative;overflow:hidden;
+}
+.r-header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.r-name{font-size:1.75rem;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:.3rem}
+.r-role{font-size:1rem;color:var(--accent);font-weight:600;margin-bottom:.75rem}
+.r-contact{font-family:var(--mono);font-size:.65rem;color:var(--text-dim);letter-spacing:.04em;line-height:1.8}
+.r-contact a{color:var(--text-mid);text-decoration:none;transition:color .2s}
+.r-contact a:hover{color:var(--accent)}
+
+/* SECTION BLOCKS */
+.r-section{padding:2rem 3rem;border-bottom:1px solid var(--border)}
+.r-section:last-child{border-bottom:none}
+.r-section-title{
+  font-family:var(--mono);font-size:.60rem;font-weight:500;
+  text-transform:uppercase;letter-spacing:.20em;color:var(--accent);
+  margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;
+}
+.r-section-title::after{content:'';flex:1;height:1px;background:var(--border2)}
+
+/* SUMMARY */
+.r-summary{font-size:.95rem;line-height:1.75;color:var(--text-mid)}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.skill-item{font-size:.88rem;color:var(--text-mid);line-height:1.55;padding:.75rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;transition:border-color .2s,color .2s}
+.skill-item:hover{border-color:var(--accent);color:var(--text)}
+.skill-item strong{color:var(--text);font-weight:600;display:block;margin-bottom:.15rem;font-size:.82rem}
+
+/* ROLES */
+.r-role-item{margin-bottom:2rem}
+.r-role-item:last-child{margin-bottom:0}
+.r-role-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem;flex-wrap:wrap;gap:.5rem}
+.r-role-meta .company{font-size:1rem;font-weight:700;color:var(--text)}
+.r-role-meta .title{font-size:.88rem;color:var(--text-mid);margin-top:.15rem}
+.r-role-date{font-family:var(--mono);font-size:.60rem;color:var(--text-dim);letter-spacing:.04em;white-space:nowrap;margin-top:.2rem}
+.r-role-bullets{list-style:none;padding:0;margin:0}
+.r-role-bullets li{font-size:.90rem;color:var(--text-mid);padding:.35rem 0 .35rem 1.25rem;position:relative;line-height:1.6;transition:color .2s}
+.r-role-bullets li:hover{color:var(--text)}
+.r-role-bullets li::before{content:'·';position:absolute;left:.1rem;color:var(--accent);font-weight:700;font-size:1.1rem;line-height:1.4}
+
+/* EDUCATION */
+.edu-items{display:flex;flex-direction:column;gap:.65rem}
+.edu-item{font-size:.90rem;color:var(--text-mid);padding:.65rem 1rem;background:var(--surface2);border-left:2px solid var(--border2);border-radius:0 6px 6px 0;transition:border-color .2s,color .2s}
+.edu-item:hover{border-left-color:var(--accent);color:var(--text)}
+.edu-item strong{color:var(--text);font-weight:600}
+
+/* METRICS */
+.metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem}
+.metric-item{padding:1rem 1.25rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:.88rem;color:var(--text-mid);line-height:1.55;transition:border-color .2s,color .2s}
+.metric-item:hover{border-color:var(--accent);color:var(--text)}
+.metric-item::before{content:'↑ ';color:var(--accent);font-weight:700}
+
+/* FOOTER */
+footer{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 5rem 2rem;max-width:1300px;margin:0 auto;border-top:1px solid var(--border)}
+.meta{font-family:var(--mono);font-size:.60rem;color:var(--text-dim);letter-spacing:.10em;display:flex;align-items:center;gap:.5rem}
+.meta svg{width:11px;height:11px;opacity:.5;flex-shrink:0}
+.links{display:flex;gap:1.75rem;align-items:center}
+.links a{color:var(--text-dim);text-decoration:none;font-family:var(--mono);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:.42rem;padding:.38rem .7rem;border-radius:6px;border:1px solid transparent;transition:color .25s,border-color .25s,background .25s,transform .2s}
+.links a:hover{color:var(--accent);border-color:var(--border2);background:var(--accent-dim);transform:translateY(-2px)}
+.links a svg{width:13px;height:13px;flex-shrink:0}
+
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;animation:up .6s ease forwards}
+.anim-1{animation-delay:.08s}.anim-2{animation-delay:.20s}
+
+/* PRINT */
+@media print{
+  body::after,body::before,header,footer,.btn-print,.top-bar .eyebrow{display:none!important}
+  body{background:#fff;color:#111}
+  .page-wrap{padding:0;max-width:100%}
+  .top-bar{border:none;margin-bottom:1rem;padding-bottom:1rem}
+  h1{font-size:1.5rem}
+  .resume-card{border:none;border-radius:0;box-shadow:none}
+  .r-header,.r-section{padding:1.25rem 1.5rem}
+  .r-header{background:#f8f8f8}
+  .skill-item,.metric-item,.edu-item,.r-role-bullets li{color:#333}
+  .skill-item strong,.r-role-meta .company,.r-name{color:#111}
+  a{color:#111;text-decoration:none}
+}
+
+@media(max-width:900px){header,footer{padding-left:3rem;padding-right:3rem}.page-wrap{padding:3rem 2rem}}
+@media(max-width:768px){header{padding:1rem 1.5rem}footer{padding:1.5rem}.page-wrap{padding:2rem 1.5rem}.top-bar{flex-direction:column;align-items:flex-start;gap:1rem}.skills-grid,.metrics-grid{grid-template-columns:1fr}.r-header,.r-section{padding:1.5rem}.r-role-header{flex-direction:column}nav{display:none}}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Sourabh Tarodekar</h1>
-        <div class="contact-line">
-            Technical Program Management — Hardware & Operations · San Francisco Bay Area<br>
-            sourabh232@gmail.com · linkedin.com/in/sourabh-tarodekar
+<header>
+  <div class="brand">
+    <div class="brand-name">Sourabh Tarodekar</div>
+    <div class="brand-title">Technical Program Manager</div>
+    <div class="brand-spec">Hardware Infrastructure · Semiconductor Systems · CapEx &amp; Capacity Planning</div>
+  </div>
+  <div class="header-right">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.html" class="active">Resume</a>
+    </nav>
+    <button class="theme-btn" onclick="cycleTheme()" id="themeBtn" title="Press T to cycle themes">
+      <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span id="themeLabel">Dark</span>
+      <span class="kbd-hint">T</span>
+    </button>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="top-bar anim anim-1">
+    <div>
+      <div class="eyebrow">Curriculum Vitae</div>
+      <h1>Resume <span>— Full Overview</span></h1>
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print / Download PDF
+    </button>
+  </div>
+
+  <div class="resume-card anim anim-2">
+
+    <!-- HEADER -->
+    <div class="r-header">
+      <div class="r-name">Sourabh Tarodekar</div>
+      <div class="r-role">Technical Program Management — Hardware &amp; Operations</div>
+      <div class="r-contact">
+        San Francisco Bay Area, CA &nbsp;·&nbsp;
+        <a href="mailto:sourabh232@gmail.com">sourabh232@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/sourabh232/" target="_blank" rel="noopener">linkedin.com/in/sourabh232</a>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="r-section">
+      <div class="r-section-title">Professional Summary</div>
+      <p class="r-summary">Technical Program Manager with 7+ years driving complex, capital-intensive hardware programs across semiconductor capital equipment and automotive NPI. Expertise in $63M+ CapEx portfolio management, engineering build readiness, and global supply chain execution. PMP certified with MBA in Operations and MS in Business Analytics.</p>
+    </div>
+
+    <!-- CORE COMPETENCIES -->
+    <div class="r-section">
+      <div class="r-section-title">Core Competencies</div>
+      <div class="skills-grid">
+        <div class="skill-item"><strong>Program Execution</strong>NPI/EVT/DVT/PVT, CTB, BOM/ECO governance</div>
+        <div class="skill-item"><strong>Capital Strategy</strong>CapEx planning, ROI/TCO analysis, equipment reuse</div>
+        <div class="skill-item"><strong>Supply Chain</strong>Long-lead mitigation, supplier management, logistics</div>
+        <div class="skill-item"><strong>Manufacturing</strong>CM/OEM readiness, line validation, capacity planning</div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="r-section">
+      <div class="r-section-title">Professional Experience</div>
+
+      <div class="r-role-item">
+        <div class="r-role-header">
+          <div class="r-role-meta">
+            <div class="company">Applied Materials, Inc.</div>
+            <div class="title">Technical Program Manager (E-III / E-II)</div>
+          </div>
+          <div class="r-role-date">Jun 2022 – Present · Santa Clara, CA</div>
         </div>
-    </header>
-    
-    <section>
-        <h2>Professional Summary</h2>
-        <p>Technical Program Manager with 7+ years driving complex, capital-intensive hardware programs across semiconductor capital equipment and automotive NPI. Expertise in $32M+ CapEx portfolio management, engineering build readiness, and global supply chain execution. PMP certified with MBA in Operations and MS in Business Analytics.</p>
-    </section>
-    
-    <section>
-        <h2>Core Competencies</h2>
-        <div class="skills-grid">
-            <div>
-                <span class="skill-category">Program Execution:</span> NPI/EVT/DVT/PVT, CTB, BOM/ECO governance
-            </div>
-            <div>
-                <span class="skill-category">Capital Strategy:</span> CapEx planning, ROI/TCO analysis, equipment reuse
-            </div>
-            <div>
-                <span class="skill-category">Supply Chain:</span> Long-lead mitigation, supplier management, logistics
-            </div>
-            <div>
-                <span class="skill-category">Manufacturing:</span> CM/OEM readiness, line validation, capacity planning
-            </div>
-        </div>
-    </section>
-    
-    <section>
-        <h2>Professional Experience</h2>
-        
-        <div class="role">
-            <div class="role-header">
-                <div>
-                    <span class="role-title">Technical Program Manager (E-III / E-II)</span> — 
-                    <span class="role-company">Applied Materials, Inc.</span>
-                </div>
-                <span class="role-date">Jun 2022 – Present | Santa Clara, CA</span>
-            </div>
-            <ul>
-                <li>Own $32M+ annual CapEx portfolio across global facilities; improved forecast accuracy 12–15% via demand signal alignment</li>
-                <li>Lead EVT/DVT/PVT engineering builds for multi-module semiconductor systems; achieved 92–98% CTB completeness</li>
-                <li>Manage execution across CM/OEM partners in US, China, Taiwan, Vietnam; improved OTD 18% via standardized readiness criteria</li>
-                <li>Drive supplier performance optimization; reduced lead-time variability 30% through dual-sourcing and scorecarding</li>
-                <li>Deliver $1.4M+ capital efficiency through equipment reuse ($800K) and vendor consolidation ($600K)</li>
-            </ul>
-        </div>
-        
-        <div class="role">
-            <div class="role-header">
-                <div>
-                    <span class="role-title">Engineering Project Manager</span> — 
-                    <span class="role-company">Ford Motor Company</span>
-                </div>
-                <span class="role-date">Jun 2017 – Aug 2020 | Detroit, MI</span>
-            </div>
-            <ul>
-                <li>Managed global suspension and chassis systems engineering through prototype to production transitions</li>
-                <li>Led supplier execution and cost control for high-dependency launch programs</li>
-            </ul>
-        </div>
-        
-        <div class="role">
-            <div class="role-header">
-                <div>
-                    <span class="role-title">Associate Project Engineer</span> — 
-                    <span class="role-company">Jahdao Gears Pvt. Ltd.</span>
-                </div>
-                <span class="role-date">Aug 2016 – May 2017 | India</span>
-            </div>
-            <ul>
-                <li>Managed shop-floor operations, vendor sourcing, and production KPI visibility</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section>
-        <h2>Education & Certifications</h2>
-        <ul>
-            <li><strong>MBA, International Business</strong> — [Hult International Business School]</li>
-            <li><strong>MS, Business Analytics</strong> — [Hult International Business School]</li>
-            <li><strong>PMP Certification</strong> — Project Management Institute</li>
-            <li><strong>BS, Mechanical Engineering</strong> — [University of Pune]</li>
+        <ul class="r-role-bullets">
+          <li>Own $63M+ annual CapEx portfolio across global facilities; improved forecast accuracy 12–15% via demand signal alignment</li>
+          <li>Lead EVT/DVT/PVT engineering builds for multi-module semiconductor systems; achieved 92–98% CTB completeness</li>
+          <li>Manage execution across CM/OEM partners in US, China, Taiwan, Vietnam; improved OTD 18% via standardized readiness criteria</li>
+          <li>Drive supplier performance optimization; reduced lead-time variability 30% through dual-sourcing and scorecarding</li>
+          <li>Delivered $1.4M+ capital efficiency through equipment reuse ($800K) and vendor consolidation ($600K)</li>
         </ul>
-    </section>
-    
-    <section>
-        <h2>Selected Impact Metrics</h2>
-        <ul>
-            <li>35% reduction in build churn through CTB process implementation</li>
-            <li>30% faster FA resolution via structured escalation protocols</li>
-            <li>27–30% reduction in non-compliant CapEx spend via early governance</li>
-            <li>95% schedule adherence (up from 82%) through unified operating cadence</li>
+      </div>
+
+      <div class="r-role-item">
+        <div class="r-role-header">
+          <div class="r-role-meta">
+            <div class="company">Ford Motor Company</div>
+            <div class="title">Engineering Project Manager — Systems &amp; Components</div>
+          </div>
+          <div class="r-role-date">Jun 2017 – Aug 2020 · Detroit, MI</div>
+        </div>
+        <ul class="r-role-bullets">
+          <li>Managed global suspension and chassis systems engineering through prototype to production transitions</li>
+          <li>Led supplier execution and cost control for high-dependency launch programs</li>
         </ul>
-    </section>
+      </div>
+
+      <div class="r-role-item">
+        <div class="r-role-header">
+          <div class="r-role-meta">
+            <div class="company">Jahdao Gears Pvt. Ltd.</div>
+            <div class="title">Associate Project Engineer — Manufacturing Operations</div>
+          </div>
+          <div class="r-role-date">Aug 2016 – May 2017 · India</div>
+        </div>
+        <ul class="r-role-bullets">
+          <li>Managed shop-floor operations, vendor sourcing, and production KPI visibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="r-section">
+      <div class="r-section-title">Education &amp; Certifications</div>
+      <div class="edu-items">
+        <div class="edu-item"><strong>MBA, International Business</strong> — Hult International Business School</div>
+        <div class="edu-item"><strong>MS, Business Analytics</strong> — Hult International Business School</div>
+        <div class="edu-item"><strong>PMP Certification</strong> — Project Management Institute</div>
+        <div class="edu-item"><strong>BS, Mechanical Engineering</strong> — University of Pune</div>
+      </div>
+    </div>
+
+    <!-- IMPACT METRICS -->
+    <div class="r-section">
+      <div class="r-section-title">Selected Impact Metrics</div>
+      <div class="metrics-grid">
+        <div class="metric-item">35% reduction in build churn through CTB process implementation</div>
+        <div class="metric-item">30% faster FA resolution via structured escalation protocols</div>
+        <div class="metric-item">27–30% reduction in non-compliant CapEx spend via early governance</div>
+        <div class="metric-item">95% schedule adherence (up from 82%) through unified operating cadence</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="meta">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    SF BAY AREA, CA &nbsp;·&nbsp; <span id="year"></span>
+  </div>
+  <div class="links">
+    <a href="https://www.linkedin.com/in/sourabh232/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    <a href="https://github.com/QuantuMaster007" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+    <a href="mailto:sourabh232@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
+  </div>
+</footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const CYCLE=['','light-mode','exec-mode'];
+const ICONS={'':'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>','light-mode':'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>','exec-mode':'<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'};
+const LABELS={'':'Dark','light-mode':'Light','exec-mode':'Exec'};
+let current=localStorage.getItem('theme')||'';
+function applyTheme(t){document.body.className=t;current=t;document.getElementById('themeIcon').innerHTML=ICONS[t];document.getElementById('themeLabel').textContent=LABELS[t];localStorage.setItem('theme',t)}
+function cycleTheme(){applyTheme(CYCLE[(CYCLE.indexOf(current)+1)%CYCLE.length])}
+applyTheme(current);
+document.addEventListener('keydown',e=>{if((e.key==='t'||e.key==='T')&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName))cycleTheme()});
+</script>
 </body>
 </html>
