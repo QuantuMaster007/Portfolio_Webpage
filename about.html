@@ -1,878 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How Sourabh Tarodekar approaches technical program management for complex hardware programs spanning CAPEX, NPI, and manufacturing operations.">
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c0e12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
-
-    <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-pre')</script>
-    <style>.light-pre body,.light-pre{background:#fafafa;color:#111827}</style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Open Graph / LinkedIn -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sourabh-tarodekar.github.io/about.html">
-    <meta property="og:title" content="About — Sourabh Tarodekar | Technical Program Management">
-    <meta property="og:description" content="How Sourabh Tarodekar approaches technical program management for complex hardware programs spanning CAPEX, NPI, and manufacturing operations.">
-    <meta property="og:site_name" content="Sourabh Tarodekar">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About — Sourabh Tarodekar | Technical Program Management">
-    <meta name="twitter:description" content="How Sourabh Tarodekar approaches technical program management for complex hardware programs.">
-
-    <title>About — Sourabh Tarodekar | Technical Program Management</title>
-
-    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
-    <link rel="stylesheet" href="shared.css">
-
-    <style>
-        /* ---- About-page layout ---- */
-        .page-container {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 6rem;
-            position: relative;
-            z-index: 10;
-            flex: 1;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-            padding-right: 2rem;
-        }
-
-        .sidebar-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .toc {
-            list-style: none;
-            border-left: 1px solid var(--border);
-            padding-left: 0;
-        }
-
-        .toc li { margin: 0; }
-
-        .toc-link {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s ease, background-color 0.2s ease;
-            border-left: 2px solid transparent;
-            margin-left: -1px;
-        }
-
-        .toc-link:hover {
-            color: var(--text-primary);
-            background: var(--accent-subtle);
-        }
-
-        .toc-link.active {
-            color: var(--accent);
-            border-left-color: var(--accent);
-            background: var(--accent-subtle);
-        }
-
-        /* Main content */
-        .content { max-width: 800px; }
-
-        .page-header {
-            margin-bottom: 4rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .eyebrow { margin-bottom: 1.5rem; }
-
-        h1 {
-            font-size: clamp(2.25rem, 4vw, 3.25rem);
-            font-weight: 300;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        h1 strong { font-weight: 600; }
-
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 400;
-            color: var(--text-primary);
-            margin: 3rem 0 1.25rem;
-            letter-spacing: -0.01em;
-            scroll-margin-top: 120px;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-        }
-
-        .stat-item { text-align: center; padding: 1rem; }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--accent);
-            display: block;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .intro-text {
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .intro-text.lead {
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            font-weight: 400;
-        }
-
-        /* Execution section header */
-        .execution-header {
-            margin-top: 4rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border-strong);
-            margin-bottom: 2rem;
-        }
-
-        .execution-header .eyebrow { margin-bottom: 0.5rem; }
-        .execution-header h2 { margin: 0; }
-
-        /* Accordion */
-        .execution-accordion {
-            margin: 3rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .accordion-item { border-bottom: 1px solid var(--border); }
-
-        .accordion-header {
-            width: 100%;
-            padding: 2rem 0;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-primary);
-            transition: color 0.2s ease;
-        }
-
-        .accordion-header:hover { color: var(--accent); }
-
-        .accordion-header-content { flex: 1; }
-
-        .accordion-category {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .accordion-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 0;
-            letter-spacing: -0.01em;
-        }
-
-        .accordion-icon {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
-            color: var(--text-secondary);
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-            color: var(--accent);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 2000px;
-            padding-bottom: 2rem;
-        }
-
-        .accordion-inner {
-            opacity: 0;
-            transition: opacity 0.3s ease 0.1s;
-        }
-
-        .accordion-item.active .accordion-inner { opacity: 1; }
-
-        .domain-description {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 75ch;
-        }
-
-        .competencies-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .competency-column h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .competency-column ul { list-style: none; padding: 0; }
-
-        .competency-column li {
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            padding-left: 1.25rem;
-            position: relative;
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-
-        .competency-column li:hover {
-            color: var(--accent);
-            transform: translateX(4px);
-        }
-
-        .competency-column li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            opacity: 0.5;
-        }
-
-        .apple-framing p {
-            font-size: 0.9375rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 0.875rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--border);
-            transition: border-color 0.2s ease, color 0.2s ease;
-        }
-
-        .apple-framing p:hover {
-            border-left-color: var(--accent);
-            color: var(--text-primary);
-        }
-
-        /* Environment box */
-        .environment-section {
-            margin: 4rem 0;
-            padding: 3rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .environment-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent);
-            opacity: 0.3;
-        }
-
-        .environment-section h2 { margin-top: 0; }
-
-        .environment-list { list-style: none; padding: 0; margin: 2rem 0; }
-
-        .environment-list li {
-            font-size: 1rem;
-            color: var(--text-primary);
-            padding: 1rem 0 1rem 2rem;
-            position: relative;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .environment-list li:last-child { border-bottom: none; }
-
-        .environment-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 1.35rem;
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-
-        /* Roles grid */
-        .roles-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .role-card {
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: default;
-        }
-
-        .role-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        body.light-mode .role-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-
-        .role-card-text {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        /* Explore section */
-        .explore-section {
-            margin-top: 6rem;
-            padding-top: 3rem;
-            border-top: 2px solid var(--border-strong);
-        }
-
-        .explore-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .explore-card {
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .explore-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .explore-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        .explore-card:hover::before { transform: scaleX(1); }
-
-        body.light-mode .explore-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
-
-        .explore-card h4 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .explore-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .explore-card .arrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: gap 0.2s ease;
-        }
-
-        .explore-card:hover .arrow { gap: 0.75rem; }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .page-container {
-                grid-template-columns: 1fr;
-                padding: 2rem 3rem;
-            }
-
-            .sidebar { display: none; }
-
-            header { padding: 1.5rem 3rem; }
-
-            .competencies-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page-container { padding: 2rem 1.5rem; }
-
-            .stats-grid { grid-template-columns: 1fr; }
-
-            .roles-grid,
-            .explore-grid { grid-template-columns: 1fr; }
-
-            .accordion-header { padding: 1.5rem 0; }
-
-            .accordion-title { font-size: 1.125rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How Sourabh Tarodekar approaches technical program management for complex hardware programs spanning CAPEX, NPI, and manufacturing operations.">
+<meta name="theme-color" content="#080a0f">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23080a0f'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='%23b8954f'>ST</text></svg>">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quantumaster007.github.io/about.html">
+<meta property="og:title" content="About — Sourabh Tarodekar | Technical Program Management">
+<meta property="og:description" content="How Sourabh Tarodekar approaches technical program management for complex hardware programs.">
+
+<title>About — Sourabh Tarodekar | Technical Program Management</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ──────────────────────────────────── */
+:root {
+  --bg:#080a0f; --surface:#0f1117; --surface2:#161b24;
+  --text:#ffffff; --text-mid:#a0aec0; --text-dim:#4a5168;
+  --accent:#b8954f; --accent-glow:rgba(184,149,79,.18); --accent-dim:rgba(184,149,79,.08);
+  --border:rgba(255,255,255,.08); --border2:rgba(255,255,255,.15);
+  --mono:'JetBrains Mono',monospace;
+}
+body.light-mode {
+  --bg:#f8fafc; --surface:#fff; --surface2:#f1f5f9;
+  --text:#0f172a; --text-mid:#475569; --text-dim:#94a3b8;
+  --accent:#1e40af; --accent-glow:rgba(30,64,175,.14); --accent-dim:rgba(30,64,175,.06);
+  --border:rgba(0,0,0,.07); --border2:rgba(0,0,0,.13);
+}
+body.exec-mode {
+  --bg:#020617; --surface:#0f172a; --surface2:#1e293b;
+  --text:#f8fafc; --text-mid:#94a3b8; --text-dim:#475569;
+  --accent:#38bdf8; --accent-glow:rgba(56,189,248,.18); --accent-dim:rgba(56,189,248,.07);
+  --border:rgba(56,189,248,.12); --border2:rgba(56,189,248,.25);
+}
+
+/* ── BASE ────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{overflow-y:auto;min-height:100%}
+body{
+  min-height:100vh; background:var(--bg); color:var(--text);
+  font-family:'Outfit',sans-serif; -webkit-font-smoothing:antialiased;
+  transition:background .4s ease,color .3s ease;
+}
+body::after{
+  content:''; position:fixed; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent 0%,var(--accent) 30%,var(--accent) 70%,transparent 100%);
+  z-index:1000; opacity:.85;
+}
+body::before{
+  content:''; position:fixed; inset:0;
+  background-image:radial-gradient(circle,var(--border) 1px,transparent 1px);
+  background-size:40px 40px; pointer-events:none; opacity:.55; z-index:0;
+}
+
+/* ── HEADER ──────────────────────────────────── */
+header{
+  position:sticky; top:0; z-index:500;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.5rem 5rem;
+  background:rgba(8,10,15,.85); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+body.light-mode header{background:rgba(248,250,252,.88)}
+body.exec-mode header{background:rgba(2,6,23,.88)}
+
+.brand{display:flex;flex-direction:column}
+.brand-name{font-size:1rem;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--text);line-height:1;transition:color .2s}
+.brand-name:hover{color:var(--accent)}
+.brand-title{font-size:.65rem;font-weight:600;color:var(--accent);letter-spacing:.10em;text-transform:uppercase;margin-top:5px}
+.brand-spec{font-family:var(--mono);font-size:.55rem;color:var(--text-dim);margin-top:4px}
+
+.header-right{display:flex;align-items:center;gap:2rem}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{
+  color:var(--text-mid); text-decoration:none; font-size:.73rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.06em; transition:color .2s;
+  position:relative; padding-bottom:3px;
+}
+nav a::after{
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:1.5px; background:var(--accent); border-radius:2px;
+  transition:width .3s cubic-bezier(.4,0,.2,1);
+}
+nav a:hover{color:var(--text)}
+nav a.active{color:var(--accent)}
+nav a.active::after,nav a:hover::after{width:100%}
+
+.theme-btn{
+  background:transparent; border:1px solid var(--border2); color:var(--text-mid);
+  padding:.42rem 1rem; font-family:var(--mono); font-size:.57rem; font-weight:500;
+  letter-spacing:.10em; cursor:pointer; border-radius:40px;
+  display:flex; align-items:center; gap:.42rem;
+  transition:border-color .25s,color .25s,background .25s,transform .2s;
+  text-transform:uppercase; white-space:nowrap;
+}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-1px)}
+.theme-btn svg{width:11px;height:11px;flex-shrink:0;transition:transform .35s ease}
+.theme-btn:hover svg{transform:rotate(30deg)}
+.kbd-hint{
+  font-family:var(--mono); font-size:.46rem; color:var(--text-dim);
+  border:1px solid var(--border2); padding:.1rem .3rem; border-radius:3px;
+  letter-spacing:.06em; opacity:.7; transition:opacity .2s;
+}
+.theme-btn:hover .kbd-hint{opacity:1}
+
+/* ── PAGE LAYOUT ─────────────────────────────── */
+.page-wrap{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns:240px 1fr;
+  gap:4rem; max-width:1300px; margin:0 auto;
+  padding:3.5rem 5rem 5rem;
+}
+
+/* ── SIDEBAR ─────────────────────────────────── */
+.sidebar{position:sticky;top:100px;height:fit-content}
+.sidebar-label{
+  font-family:var(--mono); font-size:.58rem; font-weight:500;
+  text-transform:uppercase; letter-spacing:.18em; color:var(--text-dim);
+  margin-bottom:1.25rem;
+}
+.toc{list-style:none;border-left:1px solid var(--border2)}
+.toc li{margin:0}
+.toc-link{
+  display:block; padding:.65rem 1.25rem; color:var(--text-mid);
+  text-decoration:none; font-size:.80rem; font-weight:500;
+  border-left:2px solid transparent; margin-left:-1px;
+  transition:color .2s,background .2s,border-color .2s;
+}
+.toc-link:hover{color:var(--text);background:var(--accent-dim)}
+.toc-link.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-dim)}
+
+/* ── CONTENT ─────────────────────────────────── */
+.content{max-width:820px}
+
+.page-header{margin-bottom:3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+
+.eyebrow{
+  font-family:var(--mono); font-size:.65rem; font-weight:500;
+  color:var(--accent); letter-spacing:.28em; text-transform:uppercase;
+  display:flex; align-items:center; gap:.8rem; margin-bottom:1.25rem;
+}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0}
+
+h1{
+  font-size:clamp(2rem,3.5vw,3rem); font-weight:800; line-height:1.08;
+  letter-spacing:-.03em; color:var(--text); margin-bottom:1rem;
+}
+h1 span{color:var(--accent)}
+
+h2{
+  font-size:1.45rem; font-weight:700; color:var(--text);
+  margin:2.5rem 0 1rem; letter-spacing:-.02em; scroll-margin-top:120px;
+}
+
+/* ── STATS GRID ──────────────────────────────── */
+.stats-grid{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1rem; margin:2rem 0;
+}
+.stat-item{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:1.5rem 1rem; text-align:center;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+  cursor:default; position:relative; overflow:hidden;
+}
+.stat-item::before{
+  content:''; position:absolute; top:0; left:15%; right:15%; height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0; transition:opacity .3s;
+}
+.stat-item:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 32px var(--accent-glow)}
+.stat-item:hover::before{opacity:1}
+.stat-number{font-family:var(--mono);font-size:1.8rem;font-weight:700;color:var(--accent);display:block;line-height:1;margin-bottom:.4rem}
+.stat-label{font-family:var(--mono);font-size:.54rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em}
+
+/* ── PROSE ───────────────────────────────────── */
+.intro-text{font-size:1rem;line-height:1.8;color:var(--text-mid);margin-bottom:1.25rem}
+.intro-text.lead{color:var(--text);font-size:1.1rem;font-weight:500}
+
+/* ── ACCORDION ───────────────────────────────── */
+.execution-header{
+  margin-top:3rem; padding-bottom:1rem;
+  border-bottom:2px solid var(--border2); margin-bottom:1.5rem;
+}
+.execution-accordion{border-top:1px solid var(--border);margin:2rem 0}
+.accordion-item{border-bottom:1px solid var(--border)}
+.accordion-header{
+  width:100%; padding:1.75rem 0; background:none; border:none;
+  text-align:left; cursor:pointer; display:flex;
+  justify-content:space-between; align-items:center;
+  color:var(--text); transition:color .2s;
+}
+.accordion-header:hover{color:var(--accent)}
+.accordion-header-content{flex:1}
+.accordion-category{
+  font-family:var(--mono); font-size:.60rem; text-transform:uppercase;
+  letter-spacing:.18em; color:var(--accent); margin-bottom:.4rem; font-weight:500;
+}
+.accordion-title{font-size:1.1rem;font-weight:700;margin:0;letter-spacing:-.01em}
+.accordion-icon{
+  width:22px; height:22px; flex-shrink:0; margin-left:1rem;
+  color:var(--text-dim); transition:transform .3s ease,color .2s;
+}
+.accordion-item.active .accordion-icon{transform:rotate(180deg);color:var(--accent)}
+.accordion-content{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.accordion-item.active .accordion-content{max-height:2000px;padding-bottom:2rem}
+.accordion-inner{opacity:0;transition:opacity .3s ease .1s}
+.accordion-item.active .accordion-inner{opacity:1}
+
+.domain-description{font-size:.95rem;line-height:1.75;color:var(--text-mid);margin-bottom:1.5rem;max-width:72ch}
+.competencies-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+.competency-column h4{
+  font-family:var(--mono); font-size:.58rem; text-transform:uppercase;
+  letter-spacing:.16em; color:var(--text-dim); margin-bottom:.85rem; font-weight:500;
+}
+.competency-column ul{list-style:none;padding:0}
+.competency-column li{
+  font-size:.92rem; line-height:1.6; color:var(--text-mid);
+  margin-bottom:.65rem; padding-left:1.1rem; position:relative;
+  transition:color .2s,transform .2s;
+}
+.competency-column li:hover{color:var(--accent);transform:translateX(3px)}
+.competency-column li::before{content:'—';position:absolute;left:0;color:var(--accent);opacity:.5}
+
+.apple-framing p{
+  font-size:.92rem; line-height:1.7; color:var(--text-mid);
+  margin-bottom:.75rem; padding-left:.9rem;
+  border-left:2px solid var(--border2);
+  transition:border-color .2s,color .2s;
+}
+.apple-framing p:hover{border-left-color:var(--accent);color:var(--text)}
+
+/* ── ENVIRONMENT BOX ─────────────────────────── */
+.environment-section{
+  margin:3rem 0; padding:2.5rem;
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  position:relative; overflow:hidden;
+}
+.environment-section::before{
+  content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+  background:var(--accent); opacity:.4;
+}
+.environment-section h2{margin-top:0}
+.environment-list{list-style:none;padding:0;margin:1.5rem 0}
+.environment-list li{
+  font-size:.95rem; color:var(--text-mid); padding:.9rem 0 .9rem 1.75rem;
+  position:relative; border-bottom:1px solid var(--border);
+  transition:color .2s;
+}
+.environment-list li:last-child{border-bottom:none}
+.environment-list li:hover{color:var(--text)}
+.environment-list li::before{
+  content:''; position:absolute; left:0; top:1.2rem;
+  width:7px; height:7px; background:var(--accent); border-radius:50%; opacity:.6;
+}
+
+/* ── ROLES GRID ──────────────────────────────── */
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin:1.5rem 0}
+.role-card{
+  padding:1.25rem 1.5rem; background:var(--surface); border:1px solid var(--border);
+  border-radius:8px; font-size:.92rem; font-weight:500; color:var(--text-mid);
+  transition:border-color .25s,transform .25s,color .25s;
+  cursor:default;
+}
+.role-card:hover{border-color:var(--accent);transform:translateY(-2px);color:var(--text)}
+
+/* ── EXPLORE SECTION ─────────────────────────── */
+.explore-section{margin-top:4rem;padding-top:2.5rem;border-top:2px solid var(--border2)}
+.explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.explore-card{
+  padding:1.75rem; background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; text-decoration:none; color:inherit;
+  display:flex; flex-direction:column; gap:.6rem;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+  position:relative; overflow:hidden;
+}
+.explore-card::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:0; transition:opacity .3s;
+}
+.explore-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 36px var(--accent-glow)}
+.explore-card:hover::before{opacity:1}
+.explore-card h4{font-size:1rem;font-weight:700;color:var(--text)}
+.explore-card p{font-size:.85rem;color:var(--text-mid);line-height:1.6;flex:1}
+.explore-card .arrow{
+  font-family:var(--mono); font-size:.62rem; font-weight:500;
+  color:var(--accent); text-transform:uppercase; letter-spacing:.08em;
+  display:flex; align-items:center; gap:.4rem; transition:gap .2s;
+}
+.explore-card:hover .arrow{gap:.65rem}
+
+/* ── FOOTER ──────────────────────────────────── */
+footer{
+  position:relative; z-index:1;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.5rem 5rem 2rem; max-width:1300px; margin:0 auto;
+  border-top:1px solid var(--border);
+}
+.meta{
+  font-family:var(--mono); font-size:.60rem; color:var(--text-dim);
+  letter-spacing:.10em; display:flex; align-items:center; gap:.5rem;
+}
+.meta svg{width:11px;height:11px;opacity:.5;flex-shrink:0}
+.links{display:flex;gap:1.75rem;align-items:center}
+.links a{
+  color:var(--text-dim); text-decoration:none; font-family:var(--mono);
+  font-size:.62rem; font-weight:500; text-transform:uppercase; letter-spacing:.08em;
+  display:flex; align-items:center; gap:.42rem;
+  padding:.38rem .7rem; border-radius:6px; border:1px solid transparent;
+  transition:color .25s,border-color .25s,background .25s,transform .2s;
+}
+.links a:hover{color:var(--accent);border-color:var(--border2);background:var(--accent-dim);transform:translateY(-2px)}
+.links a svg{width:13px;height:13px;flex-shrink:0}
+
+/* ── ANIMATIONS ──────────────────────────────── */
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;animation:up .6s ease forwards}
+.anim-1{animation-delay:.08s}.anim-2{animation-delay:.18s}.anim-3{animation-delay:.28s}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media(max-width:1100px){
+  header,footer{padding-left:3rem;padding-right:3rem}
+  .page-wrap{grid-template-columns:1fr;padding:2.5rem 3rem 4rem;gap:2rem}
+  .sidebar{display:none}
+}
+@media(max-width:768px){
+  header{padding:1rem 1.5rem} footer{padding:1.5rem}
+  .page-wrap{padding:2rem 1.5rem 3rem}
+  .stats-grid,.roles-grid,.competencies-grid,.explore-grid{grid-template-columns:1fr}
+  nav{display:none}
+}
+</style>
 </head>
 <body>
-    <div id="page-transition" aria-hidden="true"></div>
 
-    <div class="reading-progress" id="progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    <canvas id="circuit-canvas" aria-hidden="true" data-lines="8" data-grid="100" data-speed="0.08"></canvas>
+<header>
+  <div class="brand">
+    <div class="brand-name">Sourabh Tarodekar</div>
+    <div class="brand-title">Technical Program Manager</div>
+    <div class="brand-spec">Hardware Infrastructure · Semiconductor Systems · CapEx &amp; Capacity Planning</div>
+  </div>
+  <div class="header-right">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+    <button class="theme-btn" onclick="cycleTheme()" id="themeBtn" title="Press T to cycle themes">
+      <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span id="themeLabel">Dark</span>
+      <span class="kbd-hint">T</span>
+    </button>
+  </div>
+</header>
 
-    <header>
-        <div class="brand">
-            <div class="brand-name"><a href="index.html">Sourabh Tarodekar</a></div>
-            <div class="brand-role">Technical Program Management — Hardware & Operations</div>
-        </div>
+<div class="page-wrap">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">On This Page</div>
+    <ul class="toc">
+      <li><a href="#philosophy" class="toc-link">Philosophy</a></li>
+      <li><a href="#who" class="toc-link">Who I Am</a></li>
+      <li><a href="#approach" class="toc-link">My Approach</a></li>
+      <li><a href="#execution" class="toc-link">Execution Scope</a></li>
+      <li><a href="#environment" class="toc-link">Scale & Environment</a></li>
+      <li><a href="#roles" class="toc-link">Roles I Seek</a></li>
+      <li><a href="#explore" class="toc-link">Next Steps</a></li>
+    </ul>
+  </aside>
 
-        <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
-            <i data-lucide="menu" size="20"></i>
-        </button>
-
-        <nav id="main-nav" aria-label="Site navigation">
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html" class="active" aria-current="page">About</a>
-                <a href="capabilities.html">Capabilities</a>
-                <a href="experience.html">Experience</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <span class="availability-badge" aria-label="Currently open to new roles">
-                <span class="dot" aria-hidden="true"></span>Open to roles
-            </span>
-            <a href="resume.html" class="resume-btn" aria-label="View resume">
-                <i data-lucide="file-text" size="13" aria-hidden="true"></i> Resume
-            </a>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
-                <i data-lucide="moon" size="18" id="theme-icon"></i>
-            </button>
-        </nav>
-    </header>
-
-    <div class="page-container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar" aria-label="Page sections">
-            <div class="sidebar-title">On This Page</div>
-            <ul class="toc">
-                <li><a href="#philosophy" class="toc-link">Philosophy</a></li>
-                <li><a href="#who" class="toc-link">Who I Am</a></li>
-                <li><a href="#approach" class="toc-link">My Approach</a></li>
-                <li><a href="#execution" class="toc-link">Execution Scope</a></li>
-                <li><a href="#environment" class="toc-link">Scale & Environment</a></li>
-                <li><a href="#roles" class="toc-link">Roles I Seek</a></li>
-                <li><a href="#explore" class="toc-link">Next Steps</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="content">
-            <div class="page-header" id="philosophy">
-                <div class="eyebrow">Operating Philosophy</div>
-                <h1>How I approach <strong>technical program management</strong></h1>
-            </div>
-
-            <!-- Quick Stats -->
-            <div class="stats-grid" role="list" aria-label="Career highlights">
-                <div class="stat-item" role="listitem">
-                    <span class="stat-number">7+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item" role="listitem">
-                    <span class="stat-number">$50M+</span>
-                    <span class="stat-label">Capital Managed</span>
-                </div>
-                <div class="stat-item" role="listitem">
-                    <span class="stat-number">PMP</span>
-                    <span class="stat-label">Certified</span>
-                </div>
-            </div>
-
-            <section id="who">
-                <h2>Who I Am</h2>
-                <p class="intro-text lead">
-                    I am a Technical Program Manager focused on driving execution across complex, capital-intensive hardware programs in automotive and consumer electronics.
-                </p>
-                <p class="intro-text">
-                    My work sits at the intersection of product development, engineering build readiness, capital expenditure strategy, CM / OEM execution, and global supply chain delivery. I partner closely with engineering, operations, finance, and external manufacturing partners to translate technical intent into build-ready, scalable outcomes.
-                </p>
-                <p class="intro-text">
-                    I operate in environments where ambiguity is high, dependencies are tightly coupled, and decisions carry real cost, schedule, and capacity implications. With an MBA in Operations and MS in Business Analytics, I bring both financial acumen and data-driven rigor to cross-functional leadership.
-                </p>
-            </section>
-
-            <section id="approach">
-                <h2>How I Think About the TPM Role</h2>
-                <p class="intro-text lead">
-                    I view technical program management as an execution discipline, not a coordination function.
-                </p>
-                <p class="intro-text">
-                    My role is to create clarity where systems, teams, and constraints intersect — by defining ownership, readiness criteria, and decision paths early, and by maintaining operating cadence as programs evolve from concept through NPI to high-volume manufacturing.
-                </p>
-                <p class="intro-text">
-                    I focus on surfacing risks and trade-offs early, so teams and leaders can make informed decisions before issues become costly or disruptive. This means driving CapEx planning with engineering milestones, ensuring tool installation readiness aligns with build schedules, and maintaining rigorous ECO governance across distributed manufacturing partners.
-                </p>
-            </section>
-
-            <section id="execution">
-                <div class="execution-header">
-                    <span class="eyebrow">Execution Scope</span>
-                    <h2>What I Actually Do</h2>
-                </div>
-
-                <p class="intro-text">
-                    I typically operate across the following execution domains, owning outcomes rather than individual tasks. My background spans wire harness systems at Rivian and capital equipment strategy at Apple-scale environments.
-                </p>
-
-                <div class="execution-accordion">
-                    <!-- Domain 1 -->
-                    <div class="accordion-item active">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
-                            <div class="accordion-header-content">
-                                <div class="accordion-category">Product & Technology Execution</div>
-                                <h3 class="accordion-title">Product Development & Technology Execution</h3>
-                            </div>
-                            <i data-lucide="chevron-down" class="accordion-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-inner">
-                                <p class="domain-description">
-                                    I partner with engineering teams to translate system-level intent into executable plans, managing cross-system dependencies, interfaces, and technical risk across complex hardware development.
-                                </p>
-                                <div class="competencies-grid">
-                                    <div class="competency-column">
-                                        <h4>Technical Competencies</h4>
-                                        <ul>
-                                            <li>System-level planning and technical dependency management</li>
-                                            <li>Interface definition and cross-functional integration tracking</li>
-                                            <li>Requirements alignment and traceability across subsystems</li>
-                                            <li>Technical risk identification, triage, and closure ownership</li>
-                                            <li>Design change impact assessment across schedule, cost, and readiness</li>
-                                            <li>Bring-up readiness support and issue triage coordination</li>
-                                            <li>Verification and validation planning aligned to build phase</li>
-                                        </ul>
-                                    </div>
-                                    <div class="competency-column apple-framing">
-                                        <h4>How I Apply This</h4>
-                                        <p>Driving engineering development with clear ownership and operating cadence</p>
-                                        <p>Managing cross-functional interfaces to prevent downstream integration risk</p>
-                                        <p>Making trade-offs explicit across schedule, cost, performance, and manufacturability</p>
-                                        <p>Ensuring technical decisions remain aligned to build readiness and scale</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Domain 2 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            <div class="accordion-header-content">
-                                <div class="accordion-category">Build Readiness & NPI Execution</div>
-                                <h3 class="accordion-title">NPI / Engineering Build Readiness</h3>
-                            </div>
-                            <i data-lucide="chevron-down" class="accordion-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-inner">
-                                <p class="domain-description">
-                                    I lead engineering development builds across Proto, EVT, DVT, and PVT phases, with a primary focus on ensuring builds are genuinely ready to run. This includes managing CTB (Clear-to-Build) processes, material readiness, and configuration stability across evolving BOMs.
-                                </p>
-                                <div class="competencies-grid">
-                                    <div class="competency-column">
-                                        <h4>Technical Competencies</h4>
-                                        <ul>
-                                            <li>Build matrix management and CTB (Clear-to-Build) analysis</li>
-                                            <li>Material readiness and logistics coordination</li>
-                                            <li>Multi-level BOM structure, release, and stability management</li>
-                                            <li>Engineering Change Order (ECO) execution and impact assessment</li>
-                                            <li>Development and NPI budget procurement tracking</li>
-                                            <li>Configuration management across evolving builds</li>
-                                            <li>Multi-level assembly and build planning</li>
-                                        </ul>
-                                    </div>
-                                    <div class="competency-column apple-framing">
-                                        <h4>How I Apply This</h4>
-                                        <p>Managing engineering development builds with rigorous readiness criteria</p>
-                                        <p>Maintaining clear visibility into supplier and manufacturing lead-times</p>
-                                        <p>Building strategic partnerships to enable build success</p>
-                                        <p>Developing complex mitigation strategies for long-lead and high-risk parts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Domain 3 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            <div class="accordion-header-content">
-                                <div class="accordion-category">CM & OEM Program Management</div>
-                                <h3 class="accordion-title">Contract Manufacturer Execution</h3>
-                            </div>
-                            <i data-lucide="chevron-down" class="accordion-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-inner">
-                                <p class="domain-description">
-                                    I lead execution across Contract Manufacturers and OEM partners, ensuring manufacturing readiness, capacity alignment, and predictable delivery across development and production phases. I treat CMs as execution partners, managing line readiness and capacity validation.
-                                </p>
-                                <div class="competencies-grid">
-                                    <div class="competency-column">
-                                        <h4>Technical Competencies</h4>
-                                        <ul>
-                                            <li>CM / OEM readiness assessments aligned to build phases</li>
-                                            <li>Manufacturing line readiness and capacity validation</li>
-                                            <li>Cross-functional coordination between engineering, ops, and external partners</li>
-                                            <li>Build schedule alignment across internal and external teams</li>
-                                            <li>Issue triage, escalation, and closure with manufacturing partners</li>
-                                            <li>Change impact coordination across CM / OEM environments</li>
-                                        </ul>
-                                    </div>
-                                    <div class="competency-column apple-framing">
-                                        <h4>How I Apply This</h4>
-                                        <p>Treating CMs and OEMs as execution partners, not vendors</p>
-                                        <p>Establishing clear ownership models between internal teams and manufacturing partners</p>
-                                        <p>Creating early visibility into manufacturing constraints and risks</p>
-                                        <p>Ensuring disciplined execution across geographically distributed factories</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Domain 4 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            <div class="accordion-header-content">
-                                <div class="accordion-category">CapEx Management</div>
-                                <h3 class="accordion-title">Capital Expenditure Strategy</h3>
-                            </div>
-                            <i data-lucide="chevron-down" class="accordion-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-inner">
-                                <p class="domain-description">
-                                    I support capital expenditure decisions across development and production environments, ensuring investments align with capacity needs, timing, and program risk. This includes equipment reuse strategies and incremental buy decisions.
-                                </p>
-                                <div class="competencies-grid">
-                                    <div class="competency-column">
-                                        <h4>Technical Competencies</h4>
-                                        <ul>
-                                            <li>Capital forecasting and spend tracking across programs</li>
-                                            <li>Cost vs. capacity vs. timing trade-off analysis</li>
-                                            <li>Equipment reuse, redeployment, and incremental buy decisions</li>
-                                            <li>Budget alignment with engineering build plans</li>
-                                            <li>Financial risk identification tied to schedule and readiness</li>
-                                        </ul>
-                                    </div>
-                                    <div class="competency-column apple-framing">
-                                        <h4>How I Apply This</h4>
-                                        <p>Engaging early with engineering and operations teams</p>
-                                        <p>Making data-driven capital allocation decisions</p>
-                                        <p>Balancing near-term execution needs with long-term scalability</p>
-                                        <p>Communicating financial trade-offs clearly to leadership</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Domain 5 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            <div class="accordion-header-content">
-                                <div class="accordion-category">Supply Chain Program Management</div>
-                                <h3 class="accordion-title">Supply Chain & Material Execution</h3>
-                            </div>
-                            <i data-lucide="chevron-down" class="accordion-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-inner">
-                                <p class="domain-description">
-                                    I drive material readiness across complex hardware programs by identifying risks early and coordinating recovery actions across planning, logistics, and suppliers. I specialize in long-lead part mitigation and shortage recovery.
-                                </p>
-                                <div class="competencies-grid">
-                                    <div class="competency-column">
-                                        <h4>Technical Competencies</h4>
-                                        <ul>
-                                            <li>Long-lead part identification and mitigation planning</li>
-                                            <li>Supplier capacity and lead-time analysis</li>
-                                            <li>Material availability tracking across build phases</li>
-                                            <li>Logistics readiness and shipment coordination</li>
-                                            <li>Shortage recovery and escalation management</li>
-                                            <li>BOM risk heat-mapping and prioritization</li>
-                                        </ul>
-                                    </div>
-                                    <div class="competency-column apple-framing">
-                                        <h4>How I Apply This</h4>
-                                        <p>Maintaining proactive visibility into material and supplier risk</p>
-                                        <p>Ensuring tight alignment between engineering changes and material impact</p>
-                                        <p>Executing structured mitigation strategies rather than reactive escalation</p>
-                                        <p>Delivering predictable execution across global supply chains</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="environment-section" id="environment">
-                <h2>Scale & Operating Environment</h2>
-                <p class="intro-text">
-                    I have primarily worked in large-scale manufacturing environments where programs involve:
-                </p>
-                <ul class="environment-list">
-                    <li>Capital investments measured in the tens of millions</li>
-                    <li>Multi-site, globally distributed CM, OEM, and supplier ecosystems</li>
-                    <li>Tight coupling between engineering development and factory execution</li>
-                    <li>High expectations for cost control, schedule discipline, and delivery predictability</li>
-                </ul>
-                <p class="intro-text" style="margin-top: 2rem; margin-bottom: 0;">
-                    These environments have shaped how I approach planning, risk management, and execution ownership. I am PMP certified with an MBA in Operations and MS in Business Analytics, bringing structured program governance to complex hardware execution.
-                </p>
-            </section>
-
-            <section id="roles">
-                <h2>Roles I Am Interested In</h2>
-                <p class="intro-text">I am interested in roles focused on:</p>
-                <div class="roles-grid">
-                    <div class="role-card"><div class="role-card-text">Technical Program / NPI Operations</div></div>
-                    <div class="role-card"><div class="role-card-text">Capital Expenditure (CapEx) Management</div></div>
-                    <div class="role-card"><div class="role-card-text">Supply Chain Program Management</div></div>
-                    <div class="role-card"><div class="role-card-text">CM / OEM Program Management</div></div>
-                </div>
-                <p class="intro-text">
-                    I am particularly drawn to teams where program managers are trusted to own outcomes, influence cross-functional trade-offs, and operate as true partners to engineering, operations, finance, and manufacturing teams.
-                </p>
-            </section>
-
-            <section class="explore-section" id="explore">
-                <div class="eyebrow">Continue Exploring</div>
-                <h2>Next Steps</h2>
-                <p class="intro-text">
-                    This portfolio is organized by execution capability, not job title. Select the section most relevant to your needs:
-                </p>
-                <div class="explore-grid">
-                    <a href="capabilities.html" class="explore-card">
-                        <h4><i data-lucide="briefcase" size="20" aria-hidden="true"></i> Capabilities</h4>
-                        <p>Concrete examples, artifacts, and outcomes aligned to specific execution domains including CapEx strategy and NPI readiness.</p>
-                        <div class="arrow">View Capabilities <i data-lucide="arrow-right" size="16" aria-hidden="true"></i></div>
-                    </a>
-                    <a href="experience.html" class="explore-card">
-                        <h4><i data-lucide="clock" size="20" aria-hidden="true"></i> Experience</h4>
-                        <p>Role history, program scope, and career progression across Apple-scale and automotive hardware organizations.</p>
-                        <div class="arrow">View Experience <i data-lucide="arrow-right" size="16" aria-hidden="true"></i></div>
-                    </a>
-                    <a href="contact.html" class="explore-card">
-                        <h4><i data-lucide="mail" size="20" aria-hidden="true"></i> Contact</h4>
-                        <p>Direct contact information and preferred communication methods for opportunities in hardware operations.</p>
-                        <div class="arrow">Get in Touch <i data-lucide="arrow-right" size="16" aria-hidden="true"></i></div>
-                    </a>
-                </div>
-            </section>
-        </main>
+  <!-- CONTENT -->
+  <main class="content">
+    <div class="page-header anim anim-1" id="philosophy">
+      <div class="eyebrow">Operating Philosophy</div>
+      <h1>How I approach <span>technical program management</span></h1>
     </div>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i data-lucide="arrow-up" size="20" aria-hidden="true"></i>
-    </button>
+    <div class="stats-grid anim anim-2">
+      <div class="stat-item">
+        <span class="stat-number">7+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">$63M+</span>
+        <span class="stat-label">Capital Managed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">PMP</span>
+        <span class="stat-label">Certified</span>
+      </div>
+    </div>
 
-    <footer>
-        <div class="footer-left">San Francisco Bay Area · Hardware · Manufacturing · Operations</div>
-        <div class="footer-right">
-            <a href="https://www.linkedin.com/in/sourabh-tarodekar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
-                <i data-lucide="linkedin" size="16" aria-hidden="true"></i> LinkedIn
-            </a>
-            <a href="mailto:sourabh232@gmail.com" class="social-link" aria-label="Send email">
-                <i data-lucide="mail" size="16" aria-hidden="true"></i> Email
-            </a>
+    <section id="who" class="anim anim-3">
+      <h2>Who I Am</h2>
+      <p class="intro-text lead">I am a Technical Program Manager focused on driving execution across complex, capital-intensive hardware programs in semiconductor capital equipment and automotive NPI.</p>
+      <p class="intro-text">My work sits at the intersection of product development, engineering build readiness, capital expenditure strategy, CM / OEM execution, and global supply chain delivery. I partner closely with engineering, operations, finance, and external manufacturing partners to translate technical intent into build-ready, scalable outcomes.</p>
+      <p class="intro-text">I operate in environments where ambiguity is high, dependencies are tightly coupled, and decisions carry real cost, schedule, and capacity implications. With an MBA in Operations and MS in Business Analytics, I bring both financial acumen and data-driven rigor to cross-functional leadership.</p>
+    </section>
+
+    <section id="approach">
+      <h2>How I Think About the TPM Role</h2>
+      <p class="intro-text lead">I view technical program management as an execution discipline, not a coordination function.</p>
+      <p class="intro-text">My role is to create clarity where systems, teams, and constraints intersect — by defining ownership, readiness criteria, and decision paths early, and by maintaining operating cadence as programs evolve from concept through NPI to high-volume manufacturing.</p>
+      <p class="intro-text">I focus on surfacing risks and trade-offs early, so teams and leaders can make informed decisions before issues become costly or disruptive. This means driving CapEx planning with engineering milestones, ensuring tool installation readiness aligns with build schedules, and maintaining rigorous ECO governance across distributed manufacturing partners.</p>
+    </section>
+
+    <section id="execution">
+      <div class="execution-header">
+        <div class="eyebrow">Execution Scope</div>
+        <h2 style="margin:0">What I Actually Do</h2>
+      </div>
+      <p class="intro-text">I typically operate across the following execution domains, owning outcomes rather than individual tasks.</p>
+
+      <div class="execution-accordion">
+        <!-- Domain 1 -->
+        <div class="accordion-item active">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+            <div class="accordion-header-content">
+              <div class="accordion-category">Product & Technology Execution</div>
+              <div class="accordion-title">Product Development & Technology Execution</div>
+            </div>
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="domain-description">I partner with engineering teams to translate system-level intent into executable plans, managing cross-system dependencies, interfaces, and technical risk across complex hardware development.</p>
+              <div class="competencies-grid">
+                <div class="competency-column">
+                  <h4>Technical Competencies</h4>
+                  <ul>
+                    <li>System-level planning and technical dependency management</li>
+                    <li>Interface definition and cross-functional integration tracking</li>
+                    <li>Requirements alignment and traceability across subsystems</li>
+                    <li>Technical risk identification, triage, and closure ownership</li>
+                    <li>Design change impact assessment across schedule, cost, and readiness</li>
+                    <li>Bring-up readiness support and issue triage coordination</li>
+                    <li>Verification and validation planning aligned to build phase</li>
+                  </ul>
+                </div>
+                <div class="competency-column apple-framing">
+                  <h4>How I Apply This</h4>
+                  <p>Driving engineering development with clear ownership and operating cadence</p>
+                  <p>Managing cross-functional interfaces to prevent downstream integration risk</p>
+                  <p>Making trade-offs explicit across schedule, cost, performance, and manufacturability</p>
+                  <p>Ensuring technical decisions remain aligned to build readiness and scale</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <script src="shared.js"></script>
+        <!-- Domain 2 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <div class="accordion-header-content">
+              <div class="accordion-category">Build Readiness & NPI Execution</div>
+              <div class="accordion-title">NPI / Engineering Build Readiness</div>
+            </div>
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="domain-description">I lead engineering development builds across Proto, EVT, DVT, and PVT phases, with a primary focus on ensuring builds are genuinely ready to run. This includes managing CTB processes, material readiness, and configuration stability across evolving BOMs.</p>
+              <div class="competencies-grid">
+                <div class="competency-column">
+                  <h4>Technical Competencies</h4>
+                  <ul>
+                    <li>Build matrix management and CTB (Clear-to-Build) analysis</li>
+                    <li>Material readiness and logistics coordination</li>
+                    <li>Multi-level BOM structure, release, and stability management</li>
+                    <li>Engineering Change Order (ECO) execution and impact assessment</li>
+                    <li>Development and NPI budget procurement tracking</li>
+                    <li>Configuration management across evolving builds</li>
+                    <li>Multi-level assembly and build planning</li>
+                  </ul>
+                </div>
+                <div class="competency-column apple-framing">
+                  <h4>How I Apply This</h4>
+                  <p>Managing engineering development builds with rigorous readiness criteria</p>
+                  <p>Maintaining clear visibility into supplier and manufacturing lead-times</p>
+                  <p>Building strategic partnerships to enable build success</p>
+                  <p>Developing complex mitigation strategies for long-lead and high-risk parts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain 3 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <div class="accordion-header-content">
+              <div class="accordion-category">CM & OEM Program Management</div>
+              <div class="accordion-title">Contract Manufacturer Execution</div>
+            </div>
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="domain-description">I lead execution across Contract Manufacturers and OEM partners, ensuring manufacturing readiness, capacity alignment, and predictable delivery across development and production phases.</p>
+              <div class="competencies-grid">
+                <div class="competency-column">
+                  <h4>Technical Competencies</h4>
+                  <ul>
+                    <li>CM / OEM readiness assessments aligned to build phases</li>
+                    <li>Manufacturing line readiness and capacity validation</li>
+                    <li>Cross-functional coordination between engineering, ops, and external partners</li>
+                    <li>Build schedule alignment across internal and external teams</li>
+                    <li>Issue triage, escalation, and closure with manufacturing partners</li>
+                    <li>Change impact coordination across CM / OEM environments</li>
+                  </ul>
+                </div>
+                <div class="competency-column apple-framing">
+                  <h4>How I Apply This</h4>
+                  <p>Treating CMs and OEMs as execution partners, not vendors</p>
+                  <p>Establishing clear ownership models between internal teams and manufacturing partners</p>
+                  <p>Creating early visibility into manufacturing constraints and risks</p>
+                  <p>Ensuring disciplined execution across geographically distributed factories</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain 4 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <div class="accordion-header-content">
+              <div class="accordion-category">CapEx Management</div>
+              <div class="accordion-title">Capital Expenditure Strategy</div>
+            </div>
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="domain-description">I support capital expenditure decisions across development and production environments, ensuring investments align with capacity needs, timing, and program risk. This includes equipment reuse strategies and incremental buy decisions.</p>
+              <div class="competencies-grid">
+                <div class="competency-column">
+                  <h4>Technical Competencies</h4>
+                  <ul>
+                    <li>Capital forecasting and spend tracking across programs</li>
+                    <li>Cost vs. capacity vs. timing trade-off analysis</li>
+                    <li>Equipment reuse, redeployment, and incremental buy decisions</li>
+                    <li>Budget alignment with engineering build plans</li>
+                    <li>Financial risk identification tied to schedule and readiness</li>
+                  </ul>
+                </div>
+                <div class="competency-column apple-framing">
+                  <h4>How I Apply This</h4>
+                  <p>Engaging early with engineering and operations teams</p>
+                  <p>Making data-driven capital allocation decisions</p>
+                  <p>Balancing near-term execution needs with long-term scalability</p>
+                  <p>Communicating financial trade-offs clearly to leadership</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain 5 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <div class="accordion-header-content">
+              <div class="accordion-category">Supply Chain Program Management</div>
+              <div class="accordion-title">Supply Chain & Material Execution</div>
+            </div>
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p class="domain-description">I drive material readiness across complex hardware programs by identifying risks early and coordinating recovery actions across planning, logistics, and suppliers.</p>
+              <div class="competencies-grid">
+                <div class="competency-column">
+                  <h4>Technical Competencies</h4>
+                  <ul>
+                    <li>Long-lead part identification and mitigation planning</li>
+                    <li>Supplier capacity and lead-time analysis</li>
+                    <li>Material availability tracking across build phases</li>
+                    <li>Logistics readiness and shipment coordination</li>
+                    <li>Shortage recovery and escalation management</li>
+                    <li>BOM risk heat-mapping and prioritization</li>
+                  </ul>
+                </div>
+                <div class="competency-column apple-framing">
+                  <h4>How I Apply This</h4>
+                  <p>Maintaining proactive visibility into material and supplier risk</p>
+                  <p>Ensuring tight alignment between engineering changes and material impact</p>
+                  <p>Executing structured mitigation strategies rather than reactive escalation</p>
+                  <p>Delivering predictable execution across global supply chains</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="environment-section" id="environment">
+      <h2>Scale & Operating Environment</h2>
+      <p class="intro-text">I have primarily worked in large-scale manufacturing environments where programs involve:</p>
+      <ul class="environment-list">
+        <li>Capital investments measured in the tens of millions</li>
+        <li>Multi-site, globally distributed CM, OEM, and supplier ecosystems</li>
+        <li>Tight coupling between engineering development and factory execution</li>
+        <li>High expectations for cost control, schedule discipline, and delivery predictability</li>
+      </ul>
+      <p class="intro-text" style="margin-bottom:0">I am PMP certified with an MBA in Operations and MS in Business Analytics, bringing structured program governance to complex hardware execution.</p>
+    </section>
+
+    <section id="roles">
+      <h2>Roles I Am Interested In</h2>
+      <p class="intro-text">I am interested in roles focused on:</p>
+      <div class="roles-grid">
+        <div class="role-card">Technical Program / NPI Operations</div>
+        <div class="role-card">Capital Expenditure (CapEx) Management</div>
+        <div class="role-card">Supply Chain Program Management</div>
+        <div class="role-card">CM / OEM Program Management</div>
+      </div>
+      <p class="intro-text">I am particularly drawn to teams where program managers are trusted to own outcomes, influence cross-functional trade-offs, and operate as true partners to engineering, operations, finance, and manufacturing teams.</p>
+    </section>
+
+    <section class="explore-section" id="explore">
+      <div class="eyebrow">Continue Exploring</div>
+      <h2 style="margin-top:.5rem">Next Steps</h2>
+      <p class="intro-text">This portfolio is organized by execution capability, not job title. Select the section most relevant to your needs:</p>
+      <div class="explore-grid">
+        <a href="capabilities.html" class="explore-card">
+          <h4>⚙ Capabilities</h4>
+          <p>Concrete examples, artifacts, and outcomes aligned to specific execution domains including CapEx strategy and NPI readiness.</p>
+          <div class="arrow">View Capabilities →</div>
+        </a>
+        <a href="experience.html" class="explore-card">
+          <h4>🕐 Experience</h4>
+          <p>Role history, program scope, and career progression across semiconductor capital equipment and automotive hardware organizations.</p>
+          <div class="arrow">View Experience →</div>
+        </a>
+        <a href="contact.html" class="explore-card">
+          <h4>✉ Contact</h4>
+          <p>Direct contact information and preferred communication methods for opportunities in hardware operations.</p>
+          <div class="arrow">Get in Touch →</div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="meta">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    SF BAY AREA, CA &nbsp;·&nbsp; <span id="year"></span>
+  </div>
+  <div class="links">
+    <a href="https://www.linkedin.com/in/sourabh232/" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/QuantuMaster007" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="mailto:sourabh232@gmail.com">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Email
+    </a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const CYCLE=['','light-mode','exec-mode'];
+const ICONS={'':' <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>','light-mode':'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>','exec-mode':'<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'};
+const LABELS={'':'Dark','light-mode':'Light','exec-mode':'Exec'};
+let current=localStorage.getItem('theme')||'';
+function applyTheme(t){document.body.className=t;current=t;document.getElementById('themeIcon').innerHTML=ICONS[t];document.getElementById('themeLabel').textContent=LABELS[t];localStorage.setItem('theme',t)}
+function cycleTheme(){applyTheme(CYCLE[(CYCLE.indexOf(current)+1)%CYCLE.length])}
+applyTheme(current);
+document.addEventListener('keydown',e=>{if((e.key==='t'||e.key==='T')&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName))cycleTheme()});
+// Accordion
+function toggleAccordion(btn){
+  const item=btn.closest('.accordion-item');
+  const wasActive=item.classList.contains('active');
+  document.querySelectorAll('.accordion-item.active').forEach(a=>{a.classList.remove('active');a.querySelector('.accordion-header')?.setAttribute('aria-expanded','false')});
+  if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true')}
+}
+// TOC active on scroll
+const tocLinks=document.querySelectorAll('.toc-link');
+const sections=document.querySelectorAll('section[id], div[id]');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)current=s.id});
+  tocLinks.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+current)});
+},{passive:true});
+</script>
 </body>
 </html>
